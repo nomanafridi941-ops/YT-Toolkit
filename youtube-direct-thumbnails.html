@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="YouTube Direct Thumbnail URLs - Get Direct Thumbnail Links">
+    <meta name="description" content="Convert YouTube links to direct thumbnail URLs in all available quality levels. No downloads needed, just direct image links.">
+    <title>YouTube Direct Thumbnail URLs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        nav a, .dropdown-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1rem;
+        }
+        
+        nav a:hover, .dropdown-toggle:hover {
+            opacity: 0.8;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            padding: 0.5rem 0;
+            top: 100%;
+            left: 0;
+            border-radius: 4px;
+            margin-top: 0.0rem;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .dropdown-menu a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: transform 0.3s;
+        }
+        
+        .card-header:hover {
+            transform: translateY(-2px);
+        }
+        
+        .card-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .card-content {
+            display: none;
+            padding: 2rem;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .card-content.active {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        input[type="text"], input[type="url"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus, input[type="url"]:focus {
+            outline: none;
+            border-color: #cc0000;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .result-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #eee;
+        }
+        
+        .url-group {
+            background: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .url-group h4 {
+            color: #cc0000;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .url-item {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            align-items: stretch;
+        }
+        
+        .url-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .url-item input {
+            flex: 1;
+            border: none;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+        
+        .url-item button {
+            padding: 0.5rem 1rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .quality-label {
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 4px;
+            padding: 1rem;
+            color: #0c5460;
+            margin: 1.5rem 0;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #333 0%, #111 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            nav {
+                gap: 0.75rem;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav a, .dropdown-toggle {
+                font-size: 0.9rem;
+            }
+            
+            .card-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            main {
+                margin: 1rem auto;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+            
+            .url-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="youtube-thumbnail-downloader.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:white;font-weight:bold;font-size:2.25rem">
+                <span style="background:#fff;color:#cc0000;width:50px;height:45px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.8rem">▶</span>
+                <span>YT TOOLKIT</span>
+            </a>
+            <nav>
+                <a href="youtube-thumbnail-downloader.html">Home</a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Tools ▼</button>
+                    <div class="dropdown-menu">
+                        <a href="youtube-thumbnail-downloader.html">Thumbnail Downloader</a>
+                        <a href="youtube-thumbnail-preview.html">Thumbnail Preview</a>
+                        <a href="youtube-metadata-viewer.html">Metadata Viewer</a>
+                        <a href="youtube-url-shortener.html">URL Shortener</a>
+                        <a href="youtube-video-id-extractor.html">Video ID Extractor</a>
+                        <a href="youtube-timestamp-generator.html">Timestamp Generator</a>
+                        <a href="youtube-embed-code.html">Embed Code Generator</a>
+                        <a href="youtube-playlist-id-extractor.html">Playlist ID Extractor</a>
+                        <a href="youtube-url-validator.html">URL Validator</a>
+                        <a href="youtube-direct-thumbnails.html">Direct Thumbnails</a>
+                    </div>
+                </div>
+                <a href="youtube-about.html">About</a>
+                <a href="youtube-contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h2>YouTube Direct Thumbnail URLs</h2>
+                <span class="toggle-icon">−</span>
+            </div>
+            <div class="card-content active">
+                <p style="margin-bottom: 1.5rem; color: #666;">Get direct links to YouTube video thumbnails in all available quality levels. Perfect for embedding in websites, blogs, or applications.</p>
+                
+                <div class="info-box">
+                    <strong>ℹ️ What are direct thumbnail URLs?</strong> These are direct image links that can be used anywhere on the web. No download needed - just use the URL directly in img tags or anywhere you need images.
+                </div>
+                
+                <form onsubmit="generateThumbnailUrls(event)">
+                    <div class="form-group">
+                        <label for="videoUrl">YouTube Video URL:</label>
+                        <input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" required>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="submit">Generate Thumbnail URLs</button>
+                        <button type="reset">Clear</button>
+                    </div>
+                </form>
+                
+                <div id="resultSection" style="display: none;" class="result-section">
+                    <h3>Direct Thumbnail URLs:</h3>
+                    
+                    <div class="url-group">
+                        <h4>Max Resolution (1280×720) - Best Quality</h4>
+                        <div class="url-item">
+                            <input type="text" id="maxresUrl" readonly>
+                            <button type="button" onclick="copyUrl('maxresUrl')">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="url-group">
+                        <h4>High Resolution (640×480)</h4>
+                        <div class="url-item">
+                            <input type="text" id="sdUrl" readonly>
+                            <button type="button" onclick="copyUrl('sdUrl')">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="url-group">
+                        <h4>Medium Quality (320×180)</h4>
+                        <div class="url-item">
+                            <input type="text" id="mqUrl" readonly>
+                            <button type="button" onclick="copyUrl('mqUrl')">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="url-group">
+                        <h4>Default (120×90) - Smallest</h4>
+                        <div class="url-item">
+                            <input type="text" id="defaultUrl" readonly>
+                            <button type="button" onclick="copyUrl('defaultUrl')">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h3>HTML Image Tag Example:</h3>
+                        <div class="url-group">
+                            <span class="quality-label">Usage in HTML:</span>
+                            <input type="text" id="htmlExample" readonly style="font-family: monospace; font-size: 0.85rem;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 YouTube Tools. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleCard(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            content.classList.toggle('active');
+            icon.textContent = content.classList.contains('active') ? '−' : '+';
+        }
+        
+        function extractVideoId(url) {
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+                /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/
+            ];
+            
+            for (let pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) return match[1];
+            }
+            return null;
+        }
+        
+        function generateThumbnailUrls(e) {
+            e.preventDefault();
+            
+            const url = document.getElementById('videoUrl').value;
+            const videoId = extractVideoId(url);
+            
+            if (!videoId) {
+                alert('Invalid YouTube URL. Please enter a valid URL.');
+                return;
+            }
+            
+            const maxresUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+            const sdUrl = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+            const mqUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+            const defaultUrl = `https://img.youtube.com/vi/${videoId}/default.jpg`;
+            
+            document.getElementById('maxresUrl').value = maxresUrl;
+            document.getElementById('sdUrl').value = sdUrl;
+            document.getElementById('mqUrl').value = mqUrl;
+            document.getElementById('defaultUrl').value = defaultUrl;
+            
+            document.getElementById('htmlExample').value = `<img src="${maxresUrl}" alt="Video Thumbnail">`;
+            
+            document.getElementById('resultSection').style.display = 'block';
+        }
+        
+        function copyUrl(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            document.execCommand('copy');
+            
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

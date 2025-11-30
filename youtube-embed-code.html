@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="YouTube Embed Code Generator - Create Embed Codes">
+    <meta name="description" content="Generate HTML embed codes for YouTube videos. Customize player size, autoplay settings, and more. Copy ready-to-use embed code.">
+    <title>YouTube Embed Code Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        nav a, .dropdown-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1rem;
+        }
+        
+        nav a:hover, .dropdown-toggle:hover {
+            opacity: 0.8;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            padding: 0.5rem 0;
+            top: 100%;
+            left: 0;
+            border-radius: 4px;
+            margin-top: 0.0rem;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .dropdown-menu a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: transform 0.3s;
+        }
+        
+        .card-header:hover {
+            transform: translateY(-2px);
+        }
+        
+        .card-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .card-content {
+            display: none;
+            padding: 2rem;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .card-content.active {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        input[type="text"], input[type="url"], input[type="number"], select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        
+        input[type="text"]:focus, input[type="url"]:focus, input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: #cc0000;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #cc0000;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .result-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #eee;
+        }
+        
+        .code-box {
+            background: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .code-box textarea {
+            width: 100%;
+            border: none;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .preview-box {
+            background: #000;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        
+        .preview-box iframe {
+            width: 100% !important;
+            height: 100% !important;
+            border: none;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .button-container button {
+            flex: 1;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #333 0%, #111 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            nav {
+                gap: 0.75rem;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav a, .dropdown-toggle {
+                font-size: 0.9rem;
+            }
+            
+            .card-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            main {
+                margin: 1rem auto;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="youtube-thumbnail-downloader.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:white;font-weight:bold;font-size:2.25rem">
+                <span style="background:#fff;color:#cc0000;width:50px;height:45px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.8rem">▶</span>
+                <span>YT TOOLKIT</span>
+            </a>
+            <nav>
+                <a href="youtube-thumbnail-downloader.html">Home</a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Tools ▼</button>
+                    <div class="dropdown-menu">
+                        <a href="youtube-thumbnail-downloader.html">Thumbnail Downloader</a>
+                        <a href="youtube-thumbnail-preview.html">Thumbnail Preview</a>
+                        <a href="youtube-metadata-viewer.html">Metadata Viewer</a>
+                        <a href="youtube-url-shortener.html">URL Shortener</a>
+                        <a href="youtube-video-id-extractor.html">Video ID Extractor</a>
+                        <a href="youtube-timestamp-generator.html">Timestamp Generator</a>
+                        <a href="youtube-embed-code.html">Embed Code Generator</a>
+                        <a href="youtube-playlist-id-extractor.html">Playlist ID Extractor</a>
+                        <a href="youtube-url-validator.html">URL Validator</a>
+                        <a href="youtube-direct-thumbnails.html">Direct Thumbnails</a>
+                    </div>
+                </div>
+                <a href="youtube-about.html">About</a>
+                <a href="youtube-contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h2>YouTube Embed Code Generator</h2>
+                <span class="toggle-icon">−</span>
+            </div>
+            <div class="card-content active">
+                <p style="margin-bottom: 1.5rem; color: #666;">Generate customizable HTML embed codes for YouTube videos. Configure player settings and copy ready-to-use code.</p>
+                
+                <form onsubmit="generateEmbed(event)">
+                    <div class="form-group">
+                        <label for="videoUrl">YouTube Video URL:</label>
+                        <input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" required>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                        <div class="form-group">
+                            <label for="width">Width (px):</label>
+                            <input type="number" id="width" min="200" max="1920" value="560">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="height">Height (px):</label>
+                            <input type="number" id="height" min="200" max="1080" value="315">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Player Options:</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="autoplay" name="autoplay">
+                                <label for="autoplay">Autoplay</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="controls" name="controls" checked>
+                                <label for="controls">Show Controls</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="modestbranding" name="modestbranding">
+                                <label for="modestbranding">Modest Branding</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="loop" name="loop">
+                                <label for="loop">Loop Video</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="fullscreen" name="fullscreen" checked>
+                                <label for="fullscreen">Allow Fullscreen</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="submit">Generate Embed Code</button>
+                        <button type="reset">Clear</button>
+                    </div>
+                </form>
+                
+                <div id="resultSection" style="display: none;" class="result-section">
+                    <h3>Generated Embed Code:</h3>
+                    <div class="code-box">
+                        <textarea id="embedCode" readonly></textarea>
+                    </div>
+                    <div class="button-container">
+                        <button type="button" onclick="copyToClipboard('embedCode')">Copy Code</button>
+                    </div>
+                    
+                    <h3 style="margin-top: 2rem;">Preview:</h3>
+                    <div class="preview-box" id="previewBox"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 YouTube Tools. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleCard(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            content.classList.toggle('active');
+            icon.textContent = content.classList.contains('active') ? '−' : '+';
+        }
+        
+        function extractVideoId(url) {
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+                /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/
+            ];
+            
+            for (let pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) return match[1];
+            }
+            return null;
+        }
+        
+        function generateEmbed(e) {
+            e.preventDefault();
+            
+            const url = document.getElementById('videoUrl').value;
+            const videoId = extractVideoId(url);
+            
+            if (!videoId) {
+                alert('Invalid YouTube URL. Please enter a valid URL.');
+                return;
+            }
+            
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+            const autoplay = document.getElementById('autoplay').checked ? 1 : 0;
+            const controls = document.getElementById('controls').checked ? 1 : 0;
+            const modestbranding = document.getElementById('modestbranding').checked ? 1 : 0;
+            const loop = document.getElementById('loop').checked ? 1 : 0;
+            const allowfullscreen = document.getElementById('fullscreen').checked;
+            
+            const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay}&controls=${controls}&modestbranding=${modestbranding}&loop=${loop}`;
+            
+            let embedCode = `<iframe width="${width}" height="${height}" src="${embedUrl}" frameborder="0"`;
+            if (allowfullscreen) {
+                embedCode += ` allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen`;
+            }
+            embedCode += `></iframe>`;
+            
+            document.getElementById('embedCode').value = embedCode;
+            
+            // Preview
+            const previewBox = document.getElementById('previewBox');
+            previewBox.innerHTML = `<iframe width="100%" height="100%" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            
+            document.getElementById('resultSection').style.display = 'block';
+        }
+        
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            document.execCommand('copy');
+            
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
