@@ -82,8 +82,17 @@ const ToolDetail: React.FC = () => {
             
             <AdPlaceholder />
 
+            {/* Rich SEO Content Section */}
+            <section className="bg-white dark:bg-slate-800 p-8 md:p-12 rounded-[40px] border border-gray-100 dark:border-slate-700 shadow-sm transition-theme">
+              <h2 className="text-2xl md:text-3xl font-black mb-8 text-gray-900 dark:text-white border-l-4 border-red-600 pl-4 uppercase tracking-tight">Everything You Need to Know</h2>
+              <div 
+                className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-400 font-medium leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: tool.longDescription }}
+              />
+            </section>
+
             <section className="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-gray-100 dark:border-slate-700 shadow-sm">
-              <h2 className="text-2xl font-black mb-8 dark:text-white">Detailed Guide</h2>
+              <h2 className="text-2xl font-black mb-8 dark:text-white">How to Use This Tool</h2>
               <div className="space-y-6">
                 {tool.howToUse.map((step, idx) => (
                   <div key={idx} className="flex gap-4">
@@ -95,7 +104,7 @@ const ToolDetail: React.FC = () => {
             </section>
 
             <section className="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-gray-100 dark:border-slate-700 shadow-sm">
-              <h2 className="text-2xl font-black mb-8 dark:text-white">FAQs</h2>
+              <h2 className="text-2xl font-black mb-8 dark:text-white">Frequently Asked Questions</h2>
               <div className="grid gap-6">
                 {tool.faqs.map((faq, idx) => (
                   <div key={idx} className="p-5 bg-gray-50 dark:bg-slate-900/50 rounded-2xl">

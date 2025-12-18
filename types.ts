@@ -11,6 +11,7 @@ export interface Tool {
   id: string;
   name: string;
   description: string;
+  longDescription: string; // New field for SEO content
   category: ToolCategory;
   icon: string;
   seoTitle: string;
