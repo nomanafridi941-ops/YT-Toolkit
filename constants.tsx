@@ -38,136 +38,442 @@ export const Logo = () => (
 );
 
 export const TOOLS: Tool[] = [
+  // --- THUMBNAIL TOOLS ---
   {
     id: 'thumbnail-downloader',
     name: 'Thumbnail Downloader',
     description: 'Download HD thumbnails from any YouTube video in 4K, HD, and SD.',
-    longDescription: `
-      <p>Are you looking for a way to save high-quality YouTube thumbnails? Our <strong>YouTube Thumbnail Downloader</strong> is the most reliable tool for creators, designers, and marketers. Whether you need inspiration for your next video or want to archive a specific design, we provide multiple resolution options including 4K, HD (1280x720), and SD.</p>
-      <h3>Why High-Quality Thumbnails Matter?</h3>
-      <p>Thumbnails are the first thing a viewer sees. A high-resolution thumbnail can significantly impact your <strong>Click-Through Rate (CTR)</strong>. Low-quality, blurry images often signal low-quality content, leading to fewer clicks and slower channel growth.</p>
-      <h3>Key Features:</h3>
-      <ul>
-        <li><strong>Instant Extraction:</strong> Just paste the link and get results in seconds.</li>
-        <li><strong>Full HD Support:</strong> Download the maximum resolution available (up to 1280x720).</li>
-        <li><strong>Completely Free:</strong> No hidden costs or limits on daily downloads.</li>
-        <li><strong>Works for Shorts:</strong> Fully compatible with vertical YouTube Shorts.</li>
-      </ul>
-      <h3>How to Save Thumbnails?</h3>
-      <p>Simply copy the URL of the video from your browser address bar or the "Share" button. Paste it into the input field above, and our system will fetch all available sizes. Right-click or use the download button to save the image to your device.</p>
-    `,
+    longDescription: `<h3>Free YouTube Thumbnail Downloader</h3><p>Extract and download high-quality thumbnails from any YouTube video or Short instantly. Supporting 4K and Full HD resolutions.</p>`,
     category: ToolCategory.Thumbnails,
     icon: 'fa-solid fa-cloud-arrow-down',
     type: 'utility',
     seoTitle: 'YouTube Thumbnail Downloader - Free HD & 4K',
-    seoDescription: 'Download high-quality YouTube thumbnails for free. Paste any video URL to extract thumbnails.',
+    seoDescription: 'Download high-quality YouTube thumbnails for free.',
     howToUse: ['Paste YouTube URL', 'Click Get Thumbnails', 'Download HD version'],
-    faqs: [{ question: 'Is it free?', answer: 'Yes, unlimited downloads.' }, { question: 'Does it work for Shorts?', answer: 'Yes, it works for both Videos and Shorts.' }]
+    faqs: [{ question: 'Is it free?', answer: 'Yes, unlimited downloads.' }]
   },
+  {
+    id: 'thumbnail-preview',
+    name: 'Thumbnail Preview Tool',
+    description: 'Test how your thumbnail looks on Desktop and Mobile feeds.',
+    longDescription: `<h3>CTR Optimization Tool</h3><p>Preview your thumbnails in a realistic YouTube feed to see how they compete for attention.</p>`,
+    category: ToolCategory.Thumbnails,
+    icon: 'fa-solid fa-display',
+    type: 'utility',
+    seoTitle: 'YouTube Thumbnail Preview & CTR Tester',
+    seoDescription: 'Preview your video thumbnail in a real YouTube feed.',
+    howToUse: ['Upload thumbnail', 'Enter title', 'View preview'],
+    faqs: [{ question: 'Why preview?', answer: 'To check text readability.' }]
+  },
+  {
+    id: 'thumbnail-text-generator',
+    name: 'AI Thumbnail Text',
+    description: 'Get punchy, high-CTR text overlays for your designs.',
+    longDescription: `<h3>AI Thumbnail Text Generator</h3><p>Generate short, high-impact phrases for your thumbnails using AI psychology.</p>`,
+    category: ToolCategory.Thumbnails,
+    icon: 'fa-solid fa-pen-nib',
+    type: 'ai',
+    seoTitle: 'YouTube Thumbnail Text Overlay Generator',
+    seoDescription: 'Get high-CTR text ideas for your thumbnails.',
+    howToUse: ['Enter topic', 'Generate text', 'Apply to design'],
+    faqs: [{ question: 'How many words?', answer: 'Keep it under 4 words.' }]
+  },
+
+  // --- SEO TOOLS ---
   {
     id: 'title-generator',
     name: 'AI Title Generator',
-    description: 'Create viral, click-worthy titles for your videos using advanced AI.',
-    longDescription: `
-      <p>The first 5 seconds of a viewer's interaction happen before they even click your video—it's your title and thumbnail working together. Our <strong>AI YouTube Title Generator</strong> uses advanced machine learning to analyze trending patterns and viral hooks to suggest the best possible names for your content.</p>
-      <h3>The Science of Click-Through Rate (CTR)</h3>
-      <p>A great title creates a "Curiosity Gap." It tells the viewer enough to get them interested but leaves enough unsaid that they <em>must</em> click to find out more. Our AI is trained on thousands of high-performing videos to understand what triggers a click in 2024.</p>
-      <h3>SEO Optimization for YouTube</h3>
-      <p>Beyond clicks, your title needs to be searchable. We integrate <strong>YouTube SEO keywords</strong> naturally into your titles so you can rank in search results and the "Suggested Videos" sidebar simultaneously.</p>
-      <h3>Tips for Best Results:</h3>
-      <ul>
-        <li>Use power words like "Insane," "Secret," "Mistake," or "Finally."</li>
-        <li>Keep your titles under 60 characters for mobile visibility.</li>
-        <li>Ensure your title matches the content to avoid high bounce rates.</li>
-      </ul>
-    `,
+    description: 'Create viral, click-worthy titles using advanced AI.',
+    longDescription: `<h3>AI Title Optimization</h3><p>Generate viral hooks and SEO-friendly titles that increase CTR and search ranking.</p>`,
     category: ToolCategory.SEO,
     icon: 'fa-solid fa-wand-magic-sparkles',
     type: 'ai',
-    seoTitle: 'Best AI YouTube Title Generator - Increase CTR',
-    seoDescription: 'Generate catchy, viral titles for your YouTube videos in seconds using AI.',
-    howToUse: ['Enter your main topic', 'Select generate', 'Pick the most clickable title'],
-    faqs: [{ question: 'Is it unique?', answer: 'Yes, AI creates fresh ideas every time.' }, { question: 'Does it follow SEO rules?', answer: 'Yes, it prioritizes searchable keywords.' }]
+    seoTitle: 'Best AI YouTube Title Generator',
+    seoDescription: 'Generate catchy, viral titles for your YouTube videos.',
+    howToUse: ['Enter topic', 'Click Generate', 'Pick best title'],
+    faqs: [{ question: 'Is it unique?', answer: 'Yes, fresh ideas every time.' }]
   },
   {
-    id: 'youtube-earnings-calculator',
-    name: 'Earnings Calculator',
-    description: 'Estimate your potential revenue based on views and CPM.',
-    longDescription: `
-      <p>Ever wondered how much your favorite YouTuber makes? Or perhaps you're planning your own creator journey and want to set realistic goals. Our <strong>YouTube Money Calculator</strong> provides an accurate estimate of your potential AdSense revenue based on two critical factors: Views and CPM.</p>
-      <h3>What is CPM and RPM?</h3>
-      <p><strong>CPM (Cost Per Mille)</strong> is what advertisers pay for 1,000 views. This varies wildly based on your niche (Finance has higher CPM than Gaming). <strong>RPM (Revenue Per Mille)</strong> is what you actually keep after YouTube takes its 45% cut. Our calculator accounts for these variables to give you a realistic "take-home" number.</p>
-      <h3>How to increase your earnings?</h3>
-      <p>To maximize your revenue, focus on high-CPM countries (USA, UK, Canada) and niches that attract high-value advertisers. Longer videos (8+ minutes) also allow for mid-roll ads, which can double your revenue per video.</p>
-    `,
-    category: ToolCategory.Calculators,
-    icon: 'fa-solid fa-sack-dollar',
-    type: 'calculator',
-    seoTitle: 'YouTube Money Calculator - Estimated AdSense',
-    seoDescription: 'Calculate how much you can earn from YouTube based on views and CPM.',
-    howToUse: ['Set daily views', 'Adjust CPM slider', 'View monthly/yearly profit'],
-    faqs: [{ question: 'What is CPM?', answer: 'Cost Per Mille (1,000 views).' }, { question: 'Is this accurate?', answer: 'It is a professional estimate based on industry averages.' }]
-  },
-  {
-    id: 'seo-checker',
-    name: 'Video SEO Checker',
-    description: 'Audit your video metadata to see if it is search optimized.',
-    longDescription: `
-      <p>Rank higher in search results with our <strong>YouTube SEO Audit Tool</strong>. Many creators upload great content but fail to optimize the "Metadata"—the title, description, and tags that tell YouTube's algorithm what your video is about.</p>
-      <h3>The Three Pillars of YouTube SEO</h3>
-      <ol>
-        <li><strong>Relevance:</strong> Does your metadata accurately describe the video?</li>
-        <li><strong>Authority:</strong> Is your channel established in this niche?</li>
-        <li><strong>Engagement:</strong> How long are people watching?</li>
-      </ol>
-      <p>Our tool analyzes your input against current ranking signals and gives you a score. We look for keyword density, title-description alignment, and the presence of critical SEO tags.</p>
-    `,
+    id: 'description-generator',
+    name: 'AI Description Gen',
+    description: 'Professional, SEO-optimized descriptions with timestamps.',
+    longDescription: `<h3>YouTube Description Generator</h3><p>Automatically write descriptions that include keywords, links, and chapter markers.</p>`,
     category: ToolCategory.SEO,
-    icon: 'fa-solid fa-check-double',
+    icon: 'fa-solid fa-file-signature',
     type: 'ai',
-    seoTitle: 'YouTube Video SEO Audit Tool - Rank #1',
-    seoDescription: 'Check if your video is ready for search and get improvement tips.',
-    howToUse: ['Paste your title/tags', 'Run audit', 'Follow improvement tips'],
-    faqs: [{ question: 'What score is good?', answer: 'Aim for 80/100 or higher.' }]
+    seoTitle: 'YouTube Video Description Generator',
+    seoDescription: 'Create SEO friendly descriptions with AI.',
+    howToUse: ['Enter video info', 'Generate', 'Copy to YouTube'],
+    faqs: [{ question: 'Is it SEO ready?', answer: 'Yes, includes keywords.' }]
+  },
+  {
+    id: 'tag-generator',
+    name: 'AI Tags Generator',
+    description: 'Find high-ranking keywords and tags to rank your video.',
+    longDescription: `<h3>Advanced YouTube Tag Extractor</h3><p>Generate relevant tags and keywords to help the algorithm categorize your content.</p>`,
+    category: ToolCategory.SEO,
+    icon: 'fa-solid fa-tags',
+    type: 'ai',
+    seoTitle: 'YouTube Tags Generator - SEO Tool',
+    seoDescription: 'Find high volume tags for your content.',
+    howToUse: ['Enter topic', 'Generate', 'Copy to tags section'],
+    faqs: [{ question: 'Limit?', answer: 'Max 500 characters allowed by YouTube.' }]
+  },
+  {
+    id: 'hashtag-generator',
+    name: 'Hashtag Generator',
+    description: 'Get trending hashtags for your YouTube niche.',
+    longDescription: `<h3>Viral Hashtag Suggestions</h3><p>Discovery trending hashtags to boost your video visibility across search and suggested.</p>`,
+    category: ToolCategory.SEO,
+    icon: 'fa-solid fa-hashtag',
+    type: 'ai',
+    seoTitle: 'YouTube Hashtag Generator',
+    seoDescription: 'Boost video reach with the right hashtags.',
+    howToUse: ['Enter niche', 'Generate', 'Paste in description'],
+    faqs: [{ question: 'Where to put?', answer: 'Bottom of description.' }]
   },
   {
     id: 'keyword-research',
     name: 'AI Keyword Research',
-    description: 'Find low-competition, high-volume topics for your niche.',
-    longDescription: `
-      <p>Success on YouTube starts before the camera even turns on. It starts with finding the right topic. Our <strong>Free YouTube Keyword Research Tool</strong> helps you discover what people are actually searching for, so you can create content that has built-in demand.</p>
-      <h3>Finding "Low-Hanging Fruit"</h3>
-      <p>The goal is to find keywords with high search volume but low competition. This is where small and medium channels can shine and steal views from larger creators. Our AI analyzes search trends to pinpoint these opportunities.</p>
-      <h3>Semantic Search Integration</h3>
-      <p>Modern search engines understand context. We don't just give you one keyword; we provide "related terms" that you should include in your description to build a comprehensive SEO profile for your video.</p>
-    `,
+    description: 'Find low-competition, high-volume topics.',
+    longDescription: `<h3>AI-Powered Keyword Research</h3><p>Identify what people are searching for before you film your next video.</p>`,
     category: ToolCategory.SEO,
     icon: 'fa-solid fa-magnifying-glass-plus',
     type: 'ai',
-    seoTitle: 'Free YouTube Keyword Research Tool 2024',
-    seoDescription: 'Discover high potential video topics with low competition.',
-    howToUse: ['Enter broad topic', 'Analyze keywords', 'Pick low-competition terms'],
-    faqs: [{ question: 'Is it updated?', answer: 'Yes, it uses real-time search trends.' }]
+    seoTitle: 'Free YouTube Keyword Research Tool',
+    seoDescription: 'Discover high potential video topics.',
+    howToUse: ['Enter broad topic', 'Run analysis', 'Pick low-comp keywords'],
+    faqs: [{ question: 'Updated?', answer: 'Uses 2024 search data.' }]
   },
+  {
+    id: 'seo-checker',
+    name: 'Video SEO Checker',
+    description: 'Audit your video metadata for optimization score.',
+    longDescription: `<h3>Metadata SEO Audit</h3><p>Analyze your title, tags, and description to ensure maximum searchability.</p>`,
+    category: ToolCategory.SEO,
+    icon: 'fa-solid fa-check-double',
+    type: 'ai',
+    seoTitle: 'YouTube Video SEO Audit Tool',
+    seoDescription: 'Check if your video is ready for search.',
+    howToUse: ['Paste metadata', 'Audit', 'Fix issues'],
+    faqs: [{ question: 'What is a good score?', answer: 'Aim for 80+.' }]
+  },
+  {
+    id: 'tag-extractor',
+    name: 'AI Tag Extractor',
+    description: 'Extract hidden SEO tags from any text or description.',
+    longDescription: `<h3>Keyword Extraction Utility</h3><p>Copy effective tags from high-ranking videos in your niche.</p>`,
+    category: ToolCategory.SEO,
+    icon: 'fa-solid fa-scissors',
+    type: 'ai',
+    seoTitle: 'YouTube Tag Extractor Tool',
+    seoDescription: 'Get keywords from top videos.',
+    howToUse: ['Paste description', 'Extract', 'Use for yourself'],
+    faqs: [{ question: 'Is it legal?', answer: 'Yes, it reads public metadata.' }]
+  },
+  {
+    id: 'hook-generator',
+    name: 'AI Hook Generator',
+    description: 'Opener scripts that stop the scroll instantly.',
+    longDescription: `<h3>Viral Hook Generator</h3><p>Create powerful openings for your videos that maximize audience retention.</p>`,
+    category: ToolCategory.SEO,
+    icon: 'fa-solid fa-anchor',
+    type: 'ai',
+    seoTitle: 'YouTube Video Hook Generator',
+    seoDescription: 'Viral hooks for your openers.',
+    howToUse: ['Enter topic', 'Generate', 'Script it'],
+    faqs: [{ question: 'Why hooks?', answer: 'Crucial for retention.' }]
+  },
+  {
+    id: 'retention-tips',
+    name: 'Retention Strategy',
+    description: 'Get AI advice on how to keep viewers watching longer.',
+    longDescription: `<h3>Retention Improvement Guide</h3><p>Custom tips for your specific video type to prevent viewer drop-off.</p>`,
+    category: ToolCategory.SEO,
+    icon: 'fa-solid fa-brain',
+    type: 'ai',
+    seoTitle: 'YouTube Retention Strategies',
+    seoDescription: 'Growth tips for watch time.',
+    howToUse: ['Enter topic', 'Get tips', 'Edit video'],
+    faqs: [{ question: 'Effective?', answer: 'Based on viral patterns.' }]
+  },
+
+  // --- SHORTS TOOLS ---
   {
     id: 'shorts-ideas',
     name: 'Shorts Ideas Gen',
     description: 'Viral concepts specifically for vertical video format.',
-    longDescription: `
-      <p>YouTube Shorts is the fastest-growing segment of the platform. If you aren't making vertical content, you're leaving subscribers on the table. Our <strong>YouTube Shorts Idea Generator</strong> specializes in fast-paced, high-retention concepts designed for the "swipe" feed.</p>
-      <h3>Shorts vs Long Form</h3>
-      <p>Shorts require a different psychology. You have less than 2 seconds to grab attention. Our generator focuses on "The Hook"—the opening visual or statement that stops a viewer from swiping past your video.</p>
-      <h3>Leveraging Trends</h3>
-      <p>The Shorts algorithm heavily favors trending audio and visual formats. Use this tool to adapt global trends to your specific niche effectively.</p>
-    `,
+    longDescription: `<h3>YouTube Shorts Idea Machine</h3><p>Generate short-form content ideas optimized for the swipe algorithm.</p>`,
     category: ToolCategory.Shorts,
     icon: 'fa-solid fa-bolt-lightning',
     type: 'ai',
-    seoTitle: 'YouTube Shorts Ideas Generator - Viral Concepts',
-    seoDescription: 'Get viral concepts for vertical shorts to grow your channel.',
-    howToUse: ['Pick niche', 'Generate ideas', 'Record vertical video'],
-    faqs: [{ question: 'Why shorts?', answer: 'Fastest way to get subscribers.' }]
+    seoTitle: 'YouTube Shorts Ideas Generator',
+    seoDescription: 'Viral concepts for vertical shorts.',
+    howToUse: ['Pick niche', 'Generate', 'Record'],
+    faqs: [{ question: 'Vertical?', answer: 'Yes, 9:16 format.' }]
+  },
+  {
+    id: 'shorts-hashtags',
+    name: 'Shorts Hashtag Gen',
+    description: 'The best #shorts hashtags to trigger the algorithm.',
+    longDescription: `<h3>Shorts Algorithm Optimization</h3><p>Identify hashtags that are currently trending in the Shorts feed.</p>`,
+    category: ToolCategory.Shorts,
+    icon: 'fa-brands fa-tiktok',
+    type: 'ai',
+    seoTitle: 'Shorts Viral Hashtag Generator',
+    seoDescription: 'Boost your shorts visibility.',
+    howToUse: ['Enter topic', 'Generate', 'Copy'],
+    faqs: [{ question: 'How many?', answer: '3-5 tags are best.' }]
+  },
+  {
+    id: 'shorts-script',
+    name: 'AI Shorts Script',
+    description: 'Fast-paced, high-retention 60s scripts.',
+    longDescription: `<h3>Fast-Paced Scripting</h3><p>Write scripts that keep people watching from start to finish in under 60 seconds.</p>`,
+    category: ToolCategory.Shorts,
+    icon: 'fa-solid fa-feather-pointed',
+    type: 'ai',
+    seoTitle: 'AI YouTube Shorts Scriptwriter',
+    seoDescription: 'Scripts optimized for high retention.',
+    howToUse: ['Enter topic', 'Generate', 'Read it'],
+    faqs: [{ question: 'Max length?', answer: '60 seconds.' }]
+  },
+  {
+    id: 'upload-time-tool',
+    name: 'Upload Time Calc',
+    description: 'Determine the best time to post for peak reach.',
+    longDescription: `<h3>Peak Audience Analysis</h3><p>Find the exact hour to publish your videos for maximum initial engagement.</p>`,
+    category: ToolCategory.Shorts,
+    icon: 'fa-solid fa-calendar-check',
+    type: 'utility',
+    seoTitle: 'Best Time to Upload to YouTube',
+    seoDescription: 'Find when your audience is active.',
+    howToUse: ['Select niche', 'View times', 'Schedule'],
+    faqs: [{ question: 'Timezone?', answer: 'Calculated in your local time.' }]
+  },
+
+  // --- CALCULATORS ---
+  {
+    id: 'youtube-earnings-calculator',
+    name: 'Earnings Calculator',
+    description: 'Estimate your potential revenue based on views and CPM.',
+    longDescription: `<h3>Revenue Prediction Tool</h3><p>Calculate your AdSense income based on traffic and niche CPM rates.</p>`,
+    category: ToolCategory.Calculators,
+    icon: 'fa-solid fa-sack-dollar',
+    type: 'calculator',
+    seoTitle: 'YouTube Money Calculator',
+    seoDescription: 'Calculate how much you can earn.',
+    howToUse: ['Views', 'CPM', 'Result'],
+    faqs: [{ question: 'CPM?', answer: 'Cost Per 1000 views.' }]
+  },
+  {
+    id: 'watch-time-calc',
+    name: 'Watch Time Calc',
+    description: 'Calculate how close you are to the 4000h goal.',
+    longDescription: `<h3>Monetization Progress Tracker</h3><p>Track your journey towards the 4,000 public watch hours requirement.</p>`,
+    category: ToolCategory.Calculators,
+    icon: 'fa-solid fa-stopwatch',
+    type: 'calculator',
+    seoTitle: 'YouTube Watch Time Calculator',
+    seoDescription: 'Track monetization progress.',
+    howToUse: ['Views', 'Avg Duration', 'Calc'],
+    faqs: [{ question: 'Goal?', answer: '4000 hours.' }]
+  },
+  {
+    id: 'engagement-calculator',
+    name: 'Engagement Calc',
+    description: 'Calculate your true audience engagement rate.',
+    longDescription: `<h3>Channel Health Metric</h3><p>Verify if your audience is actively interacting with your content.</p>`,
+    category: ToolCategory.Calculators,
+    icon: 'fa-solid fa-heart-circle-check',
+    type: 'calculator',
+    seoTitle: 'YouTube Engagement Rate Calculator',
+    // Added missing seoDescription
+    seoDescription: 'Measure your audience interaction and engagement rate.',
+    howToUse: ['Views', 'Likes/Comments', 'Calc'],
+    faqs: [{ question: 'Good rate?', answer: '3-7% is great.' }]
+  },
+  {
+    id: 'ctr-calculator',
+    name: 'CTR Calculator',
+    description: 'Measure the effectiveness of your thumbnails.',
+    longDescription: `<h3>CTR Performance Analysis</h3><p>Measure how many people click after seeing your video thumbnail.</p>`,
+    category: ToolCategory.Calculators,
+    icon: 'fa-solid fa-arrow-pointer',
+    type: 'calculator',
+    seoTitle: 'YouTube CTR Calculator',
+    // Added missing seoDescription
+    seoDescription: 'Calculate your video click-through rate performance.',
+    howToUse: ['Impressions', 'Clicks', 'Calc'],
+    faqs: [{ question: 'What is high?', answer: '8%+ is elite.' }]
+  },
+  {
+    id: 'rpm-calculator',
+    name: 'RPM Calculator',
+    description: 'Revenue Per Mille - The real money you take home.',
+    longDescription: `<h3>Net Income Tracker</h3><p>Calculate your actual earnings after all deductions.</p>`,
+    category: ToolCategory.Calculators,
+    icon: 'fa-solid fa-chart-column',
+    type: 'calculator',
+    seoTitle: 'YouTube RPM Calculator',
+    // Added missing seoDescription
+    seoDescription: 'Calculate your actual revenue per thousand views (RPM).',
+    howToUse: ['Earnings', 'Views', 'Calc'],
+    faqs: [{ question: 'RPM?', answer: 'Revenue Per Mille.' }]
+  },
+  {
+    id: 'cpm-calculator',
+    name: 'CPM Calculator',
+    description: 'Calculate the cost for advertisers on your niche.',
+    longDescription: `<h3>Ad Value Calculator</h3><p>Estimate how valuable your niche is to potential advertisers.</p>`,
+    category: ToolCategory.Calculators,
+    icon: 'fa-solid fa-money-bill-trend-up',
+    type: 'calculator',
+    seoTitle: 'YouTube CPM Calculator',
+    // Added missing seoDescription
+    seoDescription: 'Determine the ad cost per mille for your YouTube niche.',
+    howToUse: ['Spend', 'Impressions', 'Calc'],
+    faqs: [{ question: 'Why?', answer: 'To find high-pay niches.' }]
+  },
+  {
+    id: 'video-planner',
+    name: 'Video Length Planner',
+    description: 'Plan your shooting schedule based on length.',
+    longDescription: `<h3>Production Planning Tool</h3><p>Calculate shooting time required for your target video length.</p>`,
+    category: ToolCategory.Calculators,
+    icon: 'fa-solid fa-clapperboard',
+    type: 'calculator',
+    seoTitle: 'YouTube Video Length Planner',
+    // Added missing seoDescription
+    seoDescription: 'Plan your production and video shooting schedule.',
+    howToUse: ['Length', 'Ratio', 'Calc'],
+    faqs: [{ question: 'Ratio?', answer: 'Usually 10:1 raw to final.' }]
+  },
+
+  // --- UTILITY TOOLS ---
+  {
+    id: 'channel-analytics-viewer',
+    name: 'AI Analytics Insights',
+    description: 'Analyze channel health with AI logic.',
+    longDescription: `<h3>AI Channel Audit</h3><p>Get deep insights into your growth potential and content gaps.</p>`,
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-chart-simple',
+    type: 'ai',
+    seoTitle: 'YouTube Channel Analytics Viewer',
+    seoDescription: 'Get insights into channel metrics.',
+    howToUse: ['Niche', 'Run AI', 'Audit'],
+    faqs: [{ question: 'Data?', answer: 'Benchmarks for niches.' }]
+  },
+  {
+    id: 'video-idea-generator',
+    name: 'AI Video Ideas',
+    description: 'Never run out of content ideas for your channel.',
+    longDescription: `<h3>Viral Idea Generation</h3><p>Get 10 fresh, trending video concepts for your specific niche.</p>`,
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-lightbulb',
+    type: 'ai',
+    seoTitle: 'YouTube Video Idea Generator',
+    // Added missing seoDescription
+    seoDescription: 'Generate unlimited viral video ideas with AI.',
+    howToUse: ['Niche', 'Generate', 'Pick'],
+    faqs: [{ question: 'Unique?', answer: 'AI generated per user.' }]
+  },
+  {
+    id: 'channel-name-generator',
+    name: 'AI Name Generator',
+    description: 'Catchy channel name ideas for your brand.',
+    longDescription: `<h3>Brand Identity Tool</h3><p>Generate professional and memorable names for your new YouTube channel.</p>`,
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-id-badge',
+    type: 'ai',
+    seoTitle: 'YouTube Channel Name Generator',
+    // Added missing seoDescription
+    seoDescription: 'Find the perfect name for your new YouTube channel.',
+    howToUse: ['Topic', 'Generate', 'Check'],
+    faqs: [{ question: 'Check?', answer: 'Manual check on YT.' }]
+  },
+  {
+    id: 'comment-picker',
+    name: 'Comment Picker',
+    description: 'Fair giveaway winner selection from comments.',
+    longDescription: `<h3>Fair Giveaway Tool</h3><p>Pick a random winner from your community comments for contests.</p>`,
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-trophy',
+    type: 'utility',
+    seoTitle: 'YouTube Random Comment Picker',
+    // Added missing seoDescription
+    seoDescription: 'Fairly pick a giveaway winner from YouTube comments.',
+    howToUse: ['Paste comments', 'Pick', 'Winner'],
+    faqs: [{ question: 'Fair?', answer: 'Uses random seed.' }]
+  },
+  {
+    id: 'timestamp-generator',
+    name: 'AI Timestamp Gen',
+    description: 'Generate video chapters and timestamps automatically.',
+    longDescription: `<h3>Chapter Marker Tool</h3><p>Create organized timestamps for your video description automatically.</p>`,
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-list-check',
+    type: 'ai',
+    seoTitle: 'YouTube Video Timestamp Generator',
+    // Added missing seoDescription
+    seoDescription: 'Create SEO friendly timestamps for your videos.',
+    howToUse: ['Key points', 'Generate', 'Paste'],
+    faqs: [{ question: 'SEO?', answer: 'Yes, helps Google snippets.' }]
+  },
+  {
+    id: 'playlist-generator',
+    name: 'AI Playlist Planner',
+    description: 'Plan the perfect series to keep fans watching.',
+    longDescription: `<h3>Watch Session Optimization</h3><p>Organize your videos into binge-worthy playlists to boost session watch time.</p>`,
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-layer-group',
+    type: 'ai',
+    seoTitle: 'YouTube Playlist Generator',
+    // Added missing seoDescription
+    seoDescription: 'Plan optimized playlists to boost session watch time.',
+    howToUse: ['Theme', 'Generate', 'Plan'],
+    faqs: [{ question: 'Why?', answer: 'Boosts total views.' }]
+  },
+  {
+    id: 'bio-generator',
+    name: 'AI Bio Generator',
+    description: 'Optimized "About" sections to turn viewers into subs.',
+    longDescription: `<h3>Channel Bio Optimizer</h3><p>Write an About section that describes your value proposition perfectly.</p>`,
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-user-gear',
+    type: 'ai',
+    seoTitle: 'YouTube Bio Generator',
+    // Added missing seoDescription
+    seoDescription: 'Write a professional YouTube channel bio with AI.',
+    howToUse: ['Niche', 'Generate', 'Copy'],
+    faqs: [{ question: 'SEO?', answer: 'Includes niche keywords.' }]
+  },
+  {
+    id: 'pinned-comment-generator',
+    name: 'AI Pinned Comment',
+    description: 'Create engagement-boosting comments for your feed.',
+    longDescription: `<h3>Call-to-Action Optimizer</h3><p>Write pinned comments that encourage likes, subs, and discussions.</p>`,
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-thumbtack',
+    type: 'ai',
+    seoTitle: 'YouTube Pinned Comment Generator',
+    // Added missing seoDescription
+    seoDescription: 'Generate high-engagement pinned comments for your videos.',
+    howToUse: ['Topic', 'Generate', 'Pin'],
+    faqs: [{ question: 'Why?', answer: 'Highest visibility spot.' }]
+  },
+  {
+    id: 'competitor-analyst',
+    name: 'Competitor Analyst',
+    description: 'Reverse engineer successful channel strategies.',
+    longDescription: `<h3>Strategy Research Tool</h3><p>Analyze what works for your competitors and adapt it for your growth.</p>`,
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-user-secret',
+    type: 'ai',
+    seoTitle: 'YouTube Competitor Analyst Tool',
+    // Added missing seoDescription
+    seoDescription: 'Analyze competitor strategies and content performance.',
+    howToUse: ['Niche', 'Analyze', 'Insights'],
+    faqs: [{ question: 'Privacy?', answer: 'Public data only.' }]
   }
-  // ... Note: In a real implementation, I would continue this for all 30+ tools. 
-  // For this demo, I've prioritized the most important SEO-ranking tools.
 ];

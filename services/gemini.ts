@@ -1,39 +1,14 @@
 
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
-export const generateWithAI = async (prompt: string, systemInstruction: string) => {
-  const apiKey = process.env.API_KEY;
-  if (!apiKey) {
-    throw new Error("API Key not found");
-  }
-
-  const ai = new GoogleGenAI({ apiKey });
-  const modelName = 'gemini-3-flash-preview';
-
-  try {
-    const response = await ai.models.generateContent({
-      model: modelName,
-      contents: prompt,
-      config: {
-        systemInstruction,
-        temperature: 0.7,
-      },
-    });
-
-    return response.text || "No response generated.";
-  } catch (error) {
-    console.error("Gemini API Error:", error);
-    return "An error occurred while generating content. Please try again.";
-  }
-};
-
 /**
  * Streaming version of AI generation for better perceived performance.
  */
 export async function* generateWithAIStream(prompt: string, systemInstruction: string) {
   const apiKey = process.env.API_KEY;
   if (!apiKey) {
-    throw new Error("API Key not found");
+    yield "Error: API Key not found. Please ensure it is configured.";
+    return;
   }
 
   const ai = new GoogleGenAI({ apiKey });
@@ -55,7 +30,7 @@ export async function* generateWithAIStream(prompt: string, systemInstruction: s
     }
   } catch (error) {
     console.error("Gemini Streaming Error:", error);
-    yield "An error occurred during streaming. Please check your connection and try again.";
+    yield "Sorry, I encountered an error while generating your request. Please try again in a few seconds.";
   }
 }
 
@@ -63,17 +38,17 @@ export const getAIPromptForTool = (toolId: string, input: string) => {
   switch (toolId) {
     case 'title-generator':
       return {
-        prompt: `Generate 10 viral YouTube titles for: "${input}". Focus on high-CTR and SEO. Format as a clean list.`,
+        prompt: `Generate 10 viral YouTube titles for: "${input}". Focus on high-CTR and SEO. Format as a clean numbered list.`,
         system: "Expert YouTube strategist."
       };
     case 'description-generator':
       return {
-        prompt: `Write a professional YouTube description for: "${input}". Include SEO keywords and timestamps. Use professional formatting.`,
+        prompt: `Write a professional YouTube description for: "${input}". Include SEO keywords, timestamps, and social links placeholder.`,
         system: "Expert YouTube SEO copywriter."
       };
     case 'tag-generator':
       return {
-        prompt: `Generate 20 high-ranking tags for: "${input}". Provide them as a simple comma-separated list.`,
+        prompt: `Generate 20 high-ranking tags for: "${input}". Provide as a comma-separated list.`,
         system: "SEO Specialist."
       };
     case 'hashtag-generator':
@@ -84,7 +59,7 @@ export const getAIPromptForTool = (toolId: string, input: string) => {
       };
     case 'seo-checker':
       return {
-        prompt: `Audit this metadata for SEO score and improvements: "${input}". Provide a score out of 100 and specific tips.`,
+        prompt: `Audit this metadata for SEO score and improvements: "${input}". Provide a score out of 100 and 5 specific actionable tips.`,
         system: "YouTube SEO Auditor."
       };
     case 'shorts-ideas':
@@ -96,52 +71,52 @@ export const getAIPromptForTool = (toolId: string, input: string) => {
     case 'shorts-script':
     case 'script-generator':
       return {
-        prompt: `Write a high-retention script for: "${input}". Include visual cues and spoken dialogue.`,
+        prompt: `Write a high-retention script for: "${input}". Include visual cues (VFX) and spoken dialogue.`,
         system: "Professional Scriptwriter."
       };
     case 'channel-name-generator':
       return {
-        prompt: `Generate 15 creative channel names for: "${input}". Categories them by style (e.g. Minimal, Descriptive, Playful).`,
+        prompt: `Generate 15 creative channel names for: "${input}". Categories them by style (e.g. Minimalist, Brandable).`,
         system: "Branding consultant."
       };
     case 'keyword-research':
       return {
-        prompt: `Find low competition keywords and their approximate search volume for: "${input}".`,
+        prompt: `Find 10 low competition keywords and their search intent for: "${input}".`,
         system: "SEO Keyword Analyst."
       };
     case 'timestamp-generator':
       return {
-        prompt: `Create a timestamp list for a video about: "${input}". Format as MM:SS - Description.`,
+        prompt: `Create a timestamp list for a video about: "${input}". Format as MM:SS - Chapter Title.`,
         system: "Video Editor Assistant."
       };
     case 'playlist-generator':
       return {
-        prompt: `Plan a sequence of 5 video titles for a playlist about: "${input}". Ensure a logical viewer journey.`,
+        prompt: `Plan a sequence of 5 video titles for a playlist series about: "${input}".`,
         system: "Channel Growth Specialist."
       };
     case 'bio-generator':
       return {
-        prompt: `Write an engaging YouTube channel 'About' bio for: "${input}". Include keywords and a CTA to subscribe.`,
+        prompt: `Write an engaging YouTube channel 'About' bio for: "${input}".`,
         system: "Brand Copywriter."
       };
     case 'pinned-comment-generator':
       return {
-        prompt: `Generate 3 engagement-boosting pinned comments for a video about: "${input}". Include a question to spark comments.`,
+        prompt: `Generate 3 engagement-boosting pinned comments for: "${input}".`,
         system: "Community Manager."
       };
     case 'competitor-analyst':
       return {
-        prompt: `Analyze content strategy and top performing video types for channels in the "${input}" niche.`,
+        prompt: `Analyze the strategy and top performing content types for the "${input}" niche.`,
         system: "Competitive Strategy Analyst."
       };
     case 'tag-extractor':
       return {
         prompt: `Extract relevant SEO keywords and tags from this text: "${input}". List them clearly.`,
-        system: "SEO Automation Specialist."
+        system: "SEO Specialist."
       };
     case 'thumbnail-text-generator':
       return {
-        prompt: `Generate 5 punchy, short text overlays for a thumbnail about: "${input}". Max 3 words each. Use impact words.`,
+        prompt: `Generate 5 short text overlays for a thumbnail about: "${input}". Max 3 words each.`,
         system: "Thumbnail Design Strategist."
       };
     case 'hook-generator':
@@ -151,18 +126,18 @@ export const getAIPromptForTool = (toolId: string, input: string) => {
       };
     case 'retention-tips':
       return {
-        prompt: `Provide 5 advanced editing and structure tips to improve retention for: "${input}". Focus on pattern interrupts.`,
-        system: "Audience Retention Analyst."
+        prompt: `Provide 5 advanced tips to improve audience retention for: "${input}".`,
+        system: "Retention Analyst."
       };
     case 'channel-analytics-viewer':
       return {
-        prompt: `Based on the niche "${input}", what are the standard performance benchmarks (CTR, Retention, CPM) and growth strategies?`,
-        system: "Channel Growth Consultant."
+        prompt: `Based on the niche "${input}", what are the expected benchmarks and growth strategies?`,
+        system: "Growth Consultant."
       };
     default:
       return {
-        prompt: input,
-        system: "Helpful YouTube assistant."
+        prompt: `Provide detailed YouTube creator advice, tips, and suggestions for: "${input}".`,
+        system: "Professional YouTube Assistant."
       };
   }
 };
