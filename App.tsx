@@ -6,12 +6,13 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import ToolsList from './pages/ToolsList';
 import ToolDetail from './pages/ToolDetail';
+import Sitemap from './pages/Sitemap';
 import SimplePage, { AboutContent, PrivacyContent } from './pages/SimplePage';
 
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen transition-theme">
         <Header />
         
         <main className="flex-grow">
@@ -20,6 +21,7 @@ const App: React.FC = () => {
             <Route path="/all-tools" element={<ToolsList />} />
             <Route path="/category/:catId" element={<ToolsList />} />
             <Route path="/tool/:toolId" element={<ToolDetail />} />
+            <Route path="/sitemap" element={<Sitemap />} />
             <Route path="/about" element={<SimplePage title="About Us" content={<AboutContent />} />} />
             <Route path="/privacy" element={<SimplePage title="Privacy Policy" content={<PrivacyContent />} />} />
             <Route path="/disclaimer" element={<SimplePage title="Disclaimer" content={<p>All tools on this website are provided "as is" without warranty of any kind. Use them at your own risk. This site is not affiliated with YouTube or Google LLC.</p>} />} />

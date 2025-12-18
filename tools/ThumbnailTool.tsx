@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const ThumbnailTool: React.FC = () => {
@@ -28,14 +27,14 @@ const ThumbnailTool: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-gray-200 dark:border-slate-700 shadow-sm transition-colors">
         <div className="flex flex-col md:flex-row gap-4">
           <input
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="Paste YouTube Video URL here..."
-            className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
+            className="flex-1 px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-900 dark:text-white focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
           />
           <button
             onClick={handleGetThumbnails}
@@ -48,12 +47,12 @@ const ThumbnailTool: React.FC = () => {
 
       {videoID && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
-          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-             <h4 className="font-bold text-gray-800 mb-3 text-sm">High Resolution (1280x720)</h4>
+          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-gray-200 dark:border-slate-700 shadow-sm overflow-hidden transition-colors">
+             <h4 className="font-bold text-gray-800 dark:text-white mb-3 text-sm">High Resolution (1280x720)</h4>
              <img 
                src={`https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`} 
                alt="Thumbnail HD" 
-               className="w-full rounded-lg mb-4 bg-gray-100"
+               className="w-full rounded-lg mb-4 bg-gray-100 dark:bg-slate-900"
                onError={(e) => {
                  (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${videoID}/0.jpg`;
                }}
@@ -68,18 +67,18 @@ const ThumbnailTool: React.FC = () => {
              </a>
           </div>
 
-          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-             <h4 className="font-bold text-gray-800 mb-3 text-sm">Standard Resolution (640x480)</h4>
+          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-gray-200 dark:border-slate-700 shadow-sm overflow-hidden transition-colors">
+             <h4 className="font-bold text-gray-800 dark:text-white mb-3 text-sm">Standard Resolution (640x480)</h4>
              <img 
                src={`https://img.youtube.com/vi/${videoID}/sddefault.jpg`} 
                alt="Thumbnail SD" 
-               className="w-full rounded-lg mb-4 bg-gray-100"
+               className="w-full rounded-lg mb-4 bg-gray-100 dark:bg-slate-900"
              />
              <a 
                href={`https://img.youtube.com/vi/${videoID}/sddefault.jpg`} 
                target="_blank"
                download
-               className="w-full block text-center bg-gray-800 text-white font-bold py-2 rounded-lg hover:bg-gray-900 transition-colors"
+               className="w-full block text-center bg-gray-800 dark:bg-slate-900 text-white font-bold py-2 rounded-lg hover:bg-gray-900 dark:hover:bg-slate-950 transition-colors"
              >
                Download SD
              </a>

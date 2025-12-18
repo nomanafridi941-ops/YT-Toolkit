@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://yttoolkitpro.com/</loc>
+    <lastmod>2024-05-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://yttoolkitpro.com/#/all-tools</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- Categories -->
+  <url><loc>https://yttoolkitpro.com/#/category/SEO Tools</loc><priority>0.7</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/category/Thumbnail Tools</loc><priority>0.7</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/category/Shorts Tools</loc><priority>0.7</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/category/Calculators</loc><priority>0.7</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/category/Utility Tools</loc><priority>0.7</priority></url>
+  <!-- Individual Tools -->
+  <url><loc>https://yttoolkitpro.com/#/tool/thumbnail-downloader</loc><priority>0.9</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/thumbnail-preview</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/title-generator</loc><priority>0.9</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/description-generator</loc><priority>0.8</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/tag-generator</loc><priority>0.8</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/hashtag-generator</loc><priority>0.8</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/youtube-earnings-calculator</loc><priority>0.9</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/channel-analytics-viewer</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/keyword-research</loc><priority>0.8</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/seo-checker</loc><priority>0.8</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/video-idea-generator</loc><priority>0.7</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/channel-name-generator</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/upload-time-tool</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/ctr-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/shorts-ideas</loc><priority>0.8</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/shorts-hashtags</loc><priority>0.8</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/shorts-script</loc><priority>0.8</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/video-planner</loc><priority>0.5</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/watch-time-calc</loc><priority>0.7</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/engagement-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/rpm-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/cpm-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/comment-picker</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/timestamp-generator</loc><priority>0.7</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/playlist-generator</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/bio-generator</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/pinned-comment-generator</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/competitor-analyst</loc><priority>0.7</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/tag-extractor</loc><priority>0.8</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/thumbnail-text-generator</loc><priority>0.6</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/hook-generator</loc><priority>0.7</priority></url>
+  <url><loc>https://yttoolkitpro.com/#/tool/retention-tips</loc><priority>0.7</priority></url>
+</urlset>
