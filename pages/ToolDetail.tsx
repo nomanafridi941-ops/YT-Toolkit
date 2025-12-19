@@ -5,6 +5,7 @@ import { TOOLS } from '../constants';
 import AdPlaceholder from '../components/AdPlaceholder';
 import ThumbnailTool from '../tools/ThumbnailTool';
 import CalculatorTool from '../tools/CalculatorTool';
+import TemplateTool from '../tools/TemplateTool';
 import AIGenerator from '../tools/AIGenerator';
 import { CommentPicker, CPMLookup, UploadTimeTool, ThumbnailPreview } from '../tools/UtilityTools';
 
@@ -50,12 +51,17 @@ const ToolDetail: React.FC = () => {
       case 'watch-time-calc': return <CalculatorTool type="watch-time" />;
       case 'video-planner': return <CalculatorTool type="video-planner" />;
       
-      // AI Tools (Existing & New)
+      // AI or Template Based Tools
       default:
+        // Use AIGenerator for 'ai' type tools to leverage Gemini
         if (tool.type === 'ai') {
-           return <AIGenerator toolId={tool.id} placeholder={`Enter your ${tool.id.includes('channel') ? 'niche' : 'topic'} here...`} buttonText="Generate Results" />;
+          return <AIGenerator toolId={tool.id} placeholder={`Describe your ${tool.id.includes('channel') ? 'niche' : 'topic'}...`} buttonText="Generate with AI" />;
         }
-        return <div className="p-8 text-center text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-slate-900 rounded-xl border border-dashed border-gray-200 dark:border-slate-800">Tool coming soon...</div>;
+        // Fallback to TemplateTool for 'template' type tools
+        if (tool.type === 'template') {
+           return <TemplateTool toolId={tool.id} placeholder={`Enter your ${tool.id.includes('channel') ? 'niche' : 'topic'} here...`} buttonText="Generate Results" />;
+        }
+        return <div className="p-8 text-center text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-slate-900 rounded-xl border border-dashed border-gray-200 dark:border-slate-800">Tool logic loading...</div>;
     }
   };
 
@@ -119,7 +125,7 @@ const ToolDetail: React.FC = () => {
           <aside className="lg:col-span-4 space-y-8">
             <div className="bg-red-600 rounded-3xl p-8 text-white shadow-xl shadow-red-600/20">
               <h3 className="text-2xl font-black mb-4">Pro Tips!</h3>
-              <p className="text-red-100 mb-6">Combine this tool with our Title Generator to maximize your CTR by up to 40%.</p>
+              <p className="text-red-100 mb-6">Maximize your CTR by using high-contrast colors in your thumbnails and punchy titles.</p>
               <a href="#/category/SEO Tools" className="block text-center bg-white text-red-600 font-black py-4 rounded-2xl hover:bg-gray-100 transition-all">Explore SEO Suite</a>
             </div>
 
