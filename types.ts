@@ -18,5 +18,5 @@ export interface Tool {
   seoDescription: string;
   howToUse: string[];
   faqs: { question: string; answer: string }[];
-  type: 'template' | 'calculator' | 'utility' | 'ai';
+  type: 'template' | 'calculator' | 'utility';
 }

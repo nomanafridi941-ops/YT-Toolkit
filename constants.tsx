@@ -42,24 +42,11 @@ export const TOOLS: Tool[] = [
     longDescription: 'Our Title Generator uses psychological hooks and SEO patterns to create titles that demand clicks. It uses formulas like curiosity gaps and listicles.',
     category: ToolCategory.SEO,
     icon: 'fa-solid fa-wand-magic-sparkles',
-    type: 'ai',
+    type: 'template',
     seoTitle: 'YouTube Title Generator - Boost Your CTR',
     seoDescription: 'Create viral YouTube titles for free with our template generator.',
     howToUse: ['Enter your main keyword.', 'Select generate.', 'Pick from the viral templates.'],
     faqs: [{ question: 'Is it free?', answer: 'Yes, 100% free with no login.' }]
-  },
-  {
-    id: 'tag-generator',
-    name: 'Tag Generator',
-    description: 'Generate SEO tags based on your video topic.',
-    longDescription: 'Find the most relevant tags to help YouTube understand your content and rank you in search results.',
-    category: ToolCategory.SEO,
-    icon: 'fa-solid fa-tags',
-    type: 'ai',
-    seoTitle: 'YouTube Tags Generator - SEO Optimization',
-    seoDescription: 'Generate relevant tags for your YouTube videos to rank higher.',
-    howToUse: ['Enter your topic.', 'Get a list of tags.', 'Copy and paste to YouTube Studio.'],
-    faqs: [{ question: 'How many tags?', answer: 'YouTube allows up to 500 characters.' }]
   },
   {
     id: 'description-generator',
@@ -68,11 +55,24 @@ export const TOOLS: Tool[] = [
     longDescription: 'Ensure your description includes a summary, timestamps, and call-to-actions to maximize your SEO score.',
     category: ToolCategory.SEO,
     icon: 'fa-solid fa-file-lines',
-    type: 'ai',
+    type: 'template',
     seoTitle: 'YouTube Description Builder - Free Tool',
     seoDescription: 'Create professional descriptions with timestamps and keywords.',
     howToUse: ['Enter video summary.', 'Generate template.', 'Fill in the blanks.'],
     faqs: [{ question: 'Does it help SEO?', answer: 'Yes, structured descriptions are vital for search.' }]
+  },
+  {
+    id: 'tag-generator',
+    name: 'Tag Generator',
+    description: 'Generate SEO tags based on your video topic.',
+    longDescription: 'Find the most relevant tags to help YouTube understand your content and rank you in search results.',
+    category: ToolCategory.SEO,
+    icon: 'fa-solid fa-tags',
+    type: 'template',
+    seoTitle: 'YouTube Tags Generator - SEO Optimization',
+    seoDescription: 'Generate relevant tags for your YouTube videos to rank higher.',
+    howToUse: ['Enter your topic.', 'Get a list of tags.', 'Copy and paste to YouTube Studio.'],
+    faqs: [{ question: 'How many tags?', answer: 'YouTube allows up to 500 characters.' }]
   },
   {
     id: 'hashtag-generator',
@@ -81,11 +81,24 @@ export const TOOLS: Tool[] = [
     longDescription: 'Hashtags help categorize your video. Use our generator to find the best 3-5 hashtags for your niche.',
     category: ToolCategory.SEO,
     icon: 'fa-solid fa-hashtag',
-    type: 'ai',
+    type: 'template',
     seoTitle: 'YouTube Hashtag Generator - Trending Tags',
     seoDescription: 'Find viral hashtags for your YouTube videos and shorts.',
     howToUse: ['Enter niche.', 'Get viral hashtags.', 'Add to your description.'],
     faqs: [{ question: 'How many hashtags?', answer: '3-5 is the ideal range.' }]
+  },
+  {
+    id: 'keyword-research',
+    name: 'Keyword Research',
+    description: 'Find low-competition, high-volume topics.',
+    longDescription: 'Identify what people are searching for before you film your next video using our niche analysis tool.',
+    category: ToolCategory.SEO,
+    icon: 'fa-solid fa-magnifying-glass-plus',
+    type: 'template',
+    seoTitle: 'YouTube Keyword Research Tool - Free Search',
+    seoDescription: 'Discover the best keywords to target for your next YouTube video.',
+    howToUse: ['Enter broad topic.', 'View analysis.', 'Pick low-comp keywords.'],
+    faqs: [{ question: 'Updated?', answer: 'Uses the latest search patterns.' }]
   },
   {
     id: 'seo-checker',
@@ -94,11 +107,24 @@ export const TOOLS: Tool[] = [
     longDescription: 'Analyze your title and description to ensure they meet the latest ranking factors.',
     category: ToolCategory.SEO,
     icon: 'fa-solid fa-magnifying-glass-chart',
-    type: 'ai',
+    type: 'template',
     seoTitle: 'YouTube Video SEO Audit Tool',
     seoDescription: 'Check your video SEO score for free.',
     howToUse: ['Enter title.', 'Enter description.', 'See your score.'],
     faqs: [{ question: 'What is a good score?', answer: 'Aim for 80% or above.' }]
+  },
+  {
+    id: 'hook-generator',
+    name: 'Hook Generator',
+    description: 'Opener scripts that stop the scroll instantly.',
+    longDescription: 'The first 3 seconds are the most important. Our tool creates psychological hooks to keep viewers watching.',
+    category: ToolCategory.SEO,
+    icon: 'fa-solid fa-anchor',
+    type: 'template',
+    seoTitle: 'Viral YouTube Hook Generator',
+    seoDescription: 'Create high-retention opening lines for your videos.',
+    howToUse: ['Enter topic.', 'Generate hooks.', 'Select the best one.'],
+    faqs: [{ question: 'Why hooks?', answer: 'They are crucial for audience retention.' }]
   },
 
   // Thumbnail Category
@@ -128,6 +154,19 @@ export const TOOLS: Tool[] = [
     howToUse: ['Upload image.', 'Enter title.', 'Check previews.'],
     faqs: [{ question: 'Does it save images?', answer: 'No, everything is local.' }]
   },
+  {
+    id: 'thumbnail-text-generator',
+    name: 'Thumbnail Text Tool',
+    description: 'Get punchy text overlays for your designs.',
+    longDescription: 'Get short, bold phrases that complement your video title and drive clicks.',
+    category: ToolCategory.Thumbnails,
+    icon: 'fa-solid fa-pen-nib',
+    type: 'template',
+    seoTitle: 'YouTube Thumbnail Text Ideas',
+    seoDescription: 'Find high-impact text for your video thumbnails.',
+    howToUse: ['Enter topic.', 'Get text ideas.', 'Apply to image.'],
+    faqs: [{ question: 'Font size?', answer: 'Always go bigger than you think.' }]
+  },
 
   // Shorts Category
   {
@@ -137,11 +176,24 @@ export const TOOLS: Tool[] = [
     longDescription: 'Generate ideas specifically designed for the swipe-friendly nature of YouTube Shorts.',
     category: ToolCategory.Shorts,
     icon: 'fa-solid fa-bolt',
-    type: 'ai',
+    type: 'template',
     seoTitle: 'YouTube Shorts Idea Generator',
     seoDescription: 'Get viral ideas for your next YouTube short.',
     howToUse: ['Enter niche.', 'Get ideas.', 'Start filming.'],
     faqs: [{ question: 'How long?', answer: 'Shorts must be under 60 seconds.' }]
+  },
+  {
+    id: 'shorts-hashtags',
+    name: 'Shorts Hashtags',
+    description: 'Trending hashtags for Shorts discovery.',
+    longDescription: 'Generate hashtags specifically optimized for the YouTube Shorts shelf.',
+    category: ToolCategory.Shorts,
+    icon: 'fa-brands fa-tiktok',
+    type: 'template',
+    seoTitle: 'YouTube Shorts Hashtag Generator',
+    seoDescription: 'Get trending hashtags for your Shorts.',
+    howToUse: ['Enter topic.', 'Get tags.', 'Paste in description.'],
+    faqs: [{ question: 'How many?', answer: '3-5 is the sweet spot.' }]
   },
   {
     id: 'shorts-script',
@@ -150,11 +202,24 @@ export const TOOLS: Tool[] = [
     longDescription: 'Write high-retention scripts using our proven hook-story-offer formulas.',
     category: ToolCategory.Shorts,
     icon: 'fa-solid fa-pen-fancy',
-    type: 'ai',
+    type: 'template',
     seoTitle: 'YouTube Shorts Script Generator',
     seoDescription: 'Write high-retention scripts for your shorts.',
     howToUse: ['Pick a template.', 'Fill details.', 'Copy script.'],
     faqs: [{ question: 'Length?', answer: 'Templates are optimized for 15-60s.' }]
+  },
+  {
+    id: 'upload-time-tool',
+    name: 'Best Post Time',
+    description: 'Find when your niche is most active.',
+    longDescription: 'Identify the global peak hours for different YouTube categories to maximize reach.',
+    category: ToolCategory.Shorts,
+    icon: 'fa-solid fa-clock',
+    type: 'utility',
+    seoTitle: 'Best Time to Post on YouTube 2024',
+    seoDescription: 'Optimize your upload schedule for more views.',
+    howToUse: ['Select niche.', 'See results.'],
+    faqs: [{ question: 'Does it change?', answer: 'Yes, weekly based on data.' }]
   },
 
   // Calculators
@@ -177,7 +242,7 @@ export const TOOLS: Tool[] = [
     description: 'Convert views and minutes to watch hours.',
     longDescription: 'Check how close you are to the 4,000-hour monetization requirement.',
     category: ToolCategory.Calculators,
-    icon: 'fa-solid fa-clock',
+    icon: 'fa-solid fa-hourglass-half',
     type: 'calculator',
     seoTitle: 'YouTube Watch Hours Calculator',
     seoDescription: 'Check progress toward 4000 watch hours.',
@@ -213,8 +278,8 @@ export const TOOLS: Tool[] = [
   {
     id: 'rpm-calculator',
     name: 'RPM Calculator',
-    description: 'Calculate Revenue Per 1000 views.',
-    longDescription: 'Calculate the total money you make per 1000 views after YouTube\'s cut.',
+    description: 'Revenue Per 1000 views.',
+    longDescription: 'Calculate the total money you make per 1000 views after YouTubes cut.',
     category: ToolCategory.Calculators,
     icon: 'fa-solid fa-chart-line',
     type: 'calculator',
@@ -223,8 +288,47 @@ export const TOOLS: Tool[] = [
     howToUse: ['Enter earnings.', 'Enter views.', 'See RPM.'],
     faqs: [{ question: 'RPM vs CPM?', answer: 'RPM is what you take home.' }]
   },
+  {
+    id: 'cpm-calculator',
+    name: 'CPM Calculator',
+    description: 'Cost Per 1000 impressions.',
+    longDescription: 'Calculate the advertiser cost per 1000 impressions for your video niche.',
+    category: ToolCategory.Calculators,
+    icon: 'fa-solid fa-money-bill-trend-up',
+    type: 'calculator',
+    seoTitle: 'YouTube CPM Calculator',
+    seoDescription: 'Calculate advertiser costs per 1,000 views.',
+    howToUse: ['Enter cost.', 'Enter impressions.', 'See CPM.'],
+    faqs: [{ question: 'Why?', answer: 'To determine niche profitability.' }]
+  },
+  {
+    id: 'video-planner',
+    name: 'Video Length Planner',
+    description: 'Plan filming time vs final length.',
+    longDescription: 'Estimate your raw footage requirements and shooting schedule based on target length.',
+    category: ToolCategory.Calculators,
+    icon: 'fa-solid fa-clapperboard',
+    type: 'calculator',
+    seoTitle: 'YouTube Video Length Planner',
+    seoDescription: 'Plan your production time efficiently.',
+    howToUse: ['Enter target length.', 'Enter raw ratio.', 'See schedule.'],
+    faqs: [{ question: 'Ratio?', answer: 'Standard ratio is 5:1 raw to final.' }]
+  },
 
   // Utility Category
+  {
+    id: 'channel-analytics-viewer',
+    name: 'Analytics Insights',
+    description: 'Local insights into channel growth metrics.',
+    longDescription: 'Analyze common growth patterns and benchmark your channel against industry standards.',
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-chart-simple',
+    type: 'template',
+    seoTitle: 'YouTube Channel Analytics Viewer',
+    seoDescription: 'Get growth insights for your channel.',
+    howToUse: ['Enter your niche.', 'View benchmarks.'],
+    faqs: [{ question: 'Real data?', answer: 'Uses industry aggregate benchmarks.' }]
+  },
   {
     id: 'video-idea-generator',
     name: 'Video Idea Matrix',
@@ -232,7 +336,7 @@ export const TOOLS: Tool[] = [
     longDescription: 'Use our niche matrix to find unique angles for common video topics.',
     category: ToolCategory.Utility,
     icon: 'fa-solid fa-lightbulb',
-    type: 'ai',
+    type: 'template',
     seoTitle: 'YouTube Video Idea Generator',
     seoDescription: 'Never run out of video ideas with our generator.',
     howToUse: ['Enter niche.', 'Get 10 fresh ideas.', 'Start planning.'],
@@ -245,7 +349,7 @@ export const TOOLS: Tool[] = [
     longDescription: 'Create professional, unique channel names based on your niche or personal name.',
     category: ToolCategory.Utility,
     icon: 'fa-solid fa-user-tag',
-    type: 'ai',
+    type: 'template',
     seoTitle: 'YouTube Channel Name Generator',
     seoDescription: 'Find a unique name for your new YouTube channel.',
     howToUse: ['Enter niche.', 'Get name ideas.', 'Choose your brand.'],
@@ -271,23 +375,75 @@ export const TOOLS: Tool[] = [
     longDescription: 'Create a compelling channel description that tells viewers why they should subscribe.',
     category: ToolCategory.Utility,
     icon: 'fa-solid fa-address-card',
-    type: 'ai',
+    type: 'template',
     seoTitle: 'YouTube Channel Bio Generator',
     seoDescription: 'Write a professional About section in seconds.',
     howToUse: ['Enter niche.', 'Enter mission.', 'Copy bio.'],
     faqs: [{ question: 'How long?', answer: 'Aim for at least 150 words.' }]
   },
   {
-    id: 'upload-time-tool',
-    name: 'Best Post Time',
-    description: 'Find when your niche is most active.',
-    longDescription: 'Identify the global peak hours for different YouTube categories to maximize reach.',
-    category: ToolCategory.Shorts,
-    icon: 'fa-solid fa-clock',
-    type: 'utility',
-    seoTitle: 'Best Time to Post on YouTube 2024',
-    seoDescription: 'Optimize your upload schedule for more views.',
-    howToUse: ['Select niche.', 'See results.'],
-    faqs: [{ question: 'Does it change?', answer: 'Yes, weekly based on data.' }]
+    id: 'timestamp-generator',
+    name: 'Timestamp Generator',
+    description: 'Create SEO chapters for your videos.',
+    longDescription: 'Quickly build a chapter list to help Google Search index your video sections.',
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-list-check',
+    type: 'template',
+    seoTitle: 'YouTube Timestamp Generator - Video Chapters',
+    seoDescription: 'Build SEO friendly chapters for your videos.',
+    howToUse: ['Enter topics.', 'Generate timestamps.', 'Paste in description.'],
+    faqs: [{ question: 'Start time?', answer: 'Must start with 00:00.' }]
+  },
+  {
+    id: 'playlist-generator',
+    name: 'Playlist Planner',
+    description: 'Plan the perfect series to keep fans watching.',
+    longDescription: 'Organize your content into a logical binging sequence to boost session duration.',
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-layer-group',
+    type: 'template',
+    seoTitle: 'YouTube Playlist Generator & Planner',
+    seoDescription: 'Increase session time with better playlists.',
+    howToUse: ['Enter series theme.', 'Get 5 video ideas.', 'Plan your shooting.'],
+    faqs: [{ question: 'Why playlists?', answer: 'They increase total channel watch time.' }]
+  },
+  {
+    id: 'pinned-comment-generator',
+    name: 'Pinned Comment Ideas',
+    description: 'Engagement-boosting comments for your feed.',
+    longDescription: 'Generate curiosity-driven questions to pin at the top of your comment section.',
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-thumbtack',
+    type: 'template',
+    seoTitle: 'YouTube Pinned Comment Generator',
+    seoDescription: 'Boost engagement with better pinned comments.',
+    howToUse: ['Enter video topic.', 'Get 3 comment ideas.', 'Pick and pin.'],
+    faqs: [{ question: 'Where to pin?', answer: 'The top of your comment section.' }]
+  },
+  {
+    id: 'competitor-analyst',
+    name: 'Competitor Analyst',
+    description: 'Reverse engineer successful channel strategies.',
+    longDescription: 'Framework for analyzing why your competitors are ranking and how to beat them.',
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-user-secret',
+    type: 'template',
+    seoTitle: 'YouTube Competitor Analysis Tool',
+    seoDescription: 'Research your niche competitors strategy.',
+    howToUse: ['Enter competitor name.', 'View analysis framework.'],
+    faqs: [{ question: 'Privacy?', answer: 'Uses public metadata logic.' }]
+  },
+  {
+    id: 'tag-extractor',
+    name: 'Tag Extractor',
+    description: 'Extract keywords from any text description.',
+    longDescription: 'Paste a video description to find the hidden SEO keywords used by other creators.',
+    category: ToolCategory.Utility,
+    icon: 'fa-solid fa-scissors',
+    type: 'template',
+    seoTitle: 'YouTube Tag Extractor from Description',
+    seoDescription: 'Find hidden keywords in video descriptions.',
+    howToUse: ['Paste description.', 'Click extract.', 'Get keyword list.'],
+    faqs: [{ question: 'Is it legal?', answer: 'Yes, it processes public text.' }]
   }
 ];

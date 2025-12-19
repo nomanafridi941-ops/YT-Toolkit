@@ -6,7 +6,6 @@ import AdPlaceholder from '../components/AdPlaceholder';
 import ThumbnailTool from '../tools/ThumbnailTool';
 import CalculatorTool from '../tools/CalculatorTool';
 import TemplateTool from '../tools/TemplateTool';
-import AIGenerator from '../tools/AIGenerator';
 import { CommentPicker, CPMLookup, UploadTimeTool, ThumbnailPreview } from '../tools/UtilityTools';
 
 const ToolDetail: React.FC = () => {
@@ -32,36 +31,25 @@ const ToolDetail: React.FC = () => {
 
   const renderToolUI = () => {
     switch (tool.id) {
-      // Utilities
+      // Specialized Utilities
       case 'thumbnail-downloader': return <ThumbnailTool />;
       case 'thumbnail-preview': return <ThumbnailPreview />;
       case 'comment-picker': return <CommentPicker />;
       case 'upload-time-tool': return <UploadTimeTool />;
       case 'cpm-reference': return <CPMLookup />;
       
-      // Calculators
+      // Standard Calculators
       case 'youtube-earnings-calculator': return <CalculatorTool type="earnings" />;
       case 'engagement-calculator': return <CalculatorTool type="engagement" />;
       case 'ctr-calculator': return <CalculatorTool type="ctr" />;
-      case 'money-goal-calculator': return <CalculatorTool type="money-goal" />;
-      case 'sponsorship-rate-calculator': return <CalculatorTool type="sponsorship" />;
-      case 'tax-estimator': return <CalculatorTool type="tax" />;
       case 'rpm-calculator': return <CalculatorTool type="rpm" />;
       case 'cpm-calculator': return <CalculatorTool type="cpm" />;
       case 'watch-time-calc': return <CalculatorTool type="watch-time" />;
       case 'video-planner': return <CalculatorTool type="video-planner" />;
       
-      // AI or Template Based Tools
+      // Logic-Based Template Generators (Replacing all AI tools)
       default:
-        // Use AIGenerator for 'ai' type tools to leverage Gemini
-        if (tool.type === 'ai') {
-          return <AIGenerator toolId={tool.id} placeholder={`Describe your ${tool.id.includes('channel') ? 'niche' : 'topic'}...`} buttonText="Generate with AI" />;
-        }
-        // Fallback to TemplateTool for 'template' type tools
-        if (tool.type === 'template') {
-           return <TemplateTool toolId={tool.id} placeholder={`Enter your ${tool.id.includes('channel') ? 'niche' : 'topic'} here...`} buttonText="Generate Results" />;
-        }
-        return <div className="p-8 text-center text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-slate-900 rounded-xl border border-dashed border-gray-200 dark:border-slate-800">Tool logic loading...</div>;
+        return <TemplateTool toolId={tool.id} placeholder={`Enter your ${tool.id.includes('channel') ? 'niche' : 'topic'} here...`} buttonText="Generate Instant Results" />;
     }
   };
 
