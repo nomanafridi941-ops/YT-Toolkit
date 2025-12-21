@@ -5,7 +5,6 @@ import ToolCard from '../components/ToolCard';
 import AdPlaceholder from '../components/AdPlaceholder';
 import TopBannerAd from '../components/TopBannerAd';
 
-
 const Home: React.FC = () => {
   // Select a mix of high-demand tools for the homepage
   const popularTools = TOOLS.filter(t => [
@@ -121,9 +120,12 @@ const Home: React.FC = () => {
           <i className="fa-solid fa-play absolute -top-10 -right-10 text-[200px] text-white opacity-5 rotate-12"></i>
           <i className="fa-solid fa-chart-line absolute -bottom-10 -left-10 text-[180px] text-white opacity-5 -rotate-12"></i>
         </section>
- <div className="mt-32 mb-32 py-12">
+
+        {/* Bottom Banner Ad */}
+        <section className="mb-32">
           <TopBannerAd />
-        </div>
+        </section>
+
       </div>
     </div>
   );
