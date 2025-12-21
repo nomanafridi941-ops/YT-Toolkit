@@ -2,7 +2,6 @@
 import React from 'react';
 import { TOOLS } from '../constants';
 import ToolCard from '../components/ToolCard';
-import AdPlaceholder from '../components/AdPlaceholder';
 import TopBannerAd from '../components/TopBannerAd';
 
 const Home: React.FC = () => {
