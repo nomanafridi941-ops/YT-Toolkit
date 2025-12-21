@@ -105,7 +105,7 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
       <span className="text-[10px] font-black text-gray-300 dark:text-gray-600 uppercase tracking-[0.3em] mb-2">{label}</span>
       <div 
         ref={adContainerRef} 
-        className={`ad-container flex justify-center items-center w-full ${type === 'banner' ? 'min-h-[90px]' : 'min-h-[250px]'}`}
+        className={`ad-container flex justify-center items-center ${type === 'banner' ? 'w-[728px] min-h-[90px]' : 'w-[300px] min-h-[250px]'} max-w-full`}
       >
         {/* Ad scripts will inject content here */}
       </div>
