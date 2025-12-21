@@ -121,11 +121,13 @@ const Home: React.FC = () => {
           <i className="fa-solid fa-chart-line absolute -bottom-10 -left-10 text-[180px] text-white opacity-5 -rotate-12"></i>
         </section>
 
-        {/* Bottom Banner Ad */}
-        <section className="mb-32">
-          <TopBannerAd />
-        </section>
+      </div>
 
+      {/* Bottom Banner Ad - Outside Container */}
+      <div className="w-full bg-gray-50 dark:bg-[#0f172a] py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <TopBannerAd />
+        </div>
       </div>
     </div>
   );
