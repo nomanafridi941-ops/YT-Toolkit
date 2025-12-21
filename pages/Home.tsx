@@ -124,10 +124,21 @@ const Home: React.FC = () => {
 
       </div>
 
-      {/* Bottom Banner Ad - Outside Container */}
+      {/* Bottom Banner Ad - Direct Script Injection */}
       <div className="w-full bg-gray-50 dark:bg-[#0f172a] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <BottomBannerAd />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
+          <div className="max-w-[728px] w-full min-h-[90px]">
+            <script type="text/javascript" dangerouslySetInnerHTML={{__html: `
+              atOptions = {
+                'key': '6a8e9b13351ca0fd75fc9383ddefaf9c',
+                'format': 'iframe',
+                'height': 90,
+                'width': 728,
+                'params': {}
+              };
+            `}} />
+            <script type="text/javascript" src="https://www.highperformanceformat.com/6a8e9b13351ca0fd75fc9383ddefaf9c/invoke.js"></script>
+          </div>
         </div>
       </div>
     </div>
