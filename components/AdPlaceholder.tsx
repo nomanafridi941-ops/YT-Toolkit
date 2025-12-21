@@ -31,7 +31,7 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
 
     const config = adConfig[type];
 
-    const loadAd = (attempt: number) => {
+    const loadAd = (attempt: number, done?: () => void) => {
       if (!adContainerRef.current) return;
 
       // Reset container before each attempt
@@ -56,6 +56,11 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
       invokeScript.type = 'text/javascript';
       invokeScript.src = `https://www.highperformanceformat.com/${config.key}/invoke.js`;
       invokeScript.async = true;
+      invokeScript.onload = () => {
+        // Cleanup to avoid global collisions with subsequent loads
+        try { (window as any).atOptions = undefined; } catch {}
+        if (done) done();
+      };
       setTimeout(() => {
         if (!adContainerRef.current) return;
         adContainerRef.current.appendChild(invokeScript);
@@ -66,12 +71,20 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
         if (!adContainerRef.current) return;
         const hasIframe = adContainerRef.current.querySelector('iframe');
         if (!hasIframe && attempt < 3) {
-          loadAd(attempt + 1);
+          loadAd(attempt + 1, done);
+        } else if (!hasIframe && attempt >= 3) {
+          // Give up but continue chain
+          try { (window as any).atOptions = undefined; } catch {}
+          if (done) done();
         }
       }, 1500);
     };
 
-    loadAd(1);
+    // Chain loads to avoid atOptions race when multiple ads exist
+    const chain = (window as any).__adChain || Promise.resolve();
+    (window as any).__adChain = chain.then(() => new Promise<void>(resolve => {
+      loadAd(1, resolve);
+    }));
 
   }, [type]);
 
