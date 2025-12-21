@@ -45,12 +45,15 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
     `;
     adContainerRef.current.appendChild(atOptionsScript);
 
-    // 2. Create the invocation script
+    // 2. Create the invocation script (slight delay to ensure atOptions is set)
     const invokeScript = document.createElement('script');
     invokeScript.type = 'text/javascript';
     invokeScript.src = `https://www.highperformanceformat.com/${config.key}/invoke.js`;
     invokeScript.async = true;
-    adContainerRef.current.appendChild(invokeScript);
+    setTimeout(() => {
+      if (!adContainerRef.current) return;
+      adContainerRef.current.appendChild(invokeScript);
+    }, 50);
 
   }, [type]);
 
@@ -67,11 +70,11 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
 
   // Flex container to center the iframe returned by the ad network
   return (
-    <div className={`flex flex-col items-center justify-center overflow-hidden my-8 ${className}`}>
+    <div className={`flex flex-col items-center justify-center my-8 ${className}`}>
       <span className="text-[10px] font-black text-gray-300 dark:text-gray-600 uppercase tracking-[0.3em] mb-2">{label}</span>
       <div 
         ref={adContainerRef} 
-        className={`ad-container flex justify-center items-center w-full min-h-[${type === 'banner' ? '90px' : '250px'}]`}
+        className={`ad-container flex justify-center items-center w-full ${type === 'banner' ? 'min-h-[90px]' : 'min-h-[250px]'}`}
       >
         {/* Ad scripts will inject content here */}
       </div>
