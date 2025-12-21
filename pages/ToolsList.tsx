@@ -56,10 +56,6 @@ const ToolsList: React.FC = () => {
           <ToolCard key={tool.id} tool={tool} />
         ))}
       </div>
-
-      <div className="mt-24 pt-16 border-t border-gray-200 dark:border-slate-800 mb-12">
-        <TopBannerAd />
-      </div>
     </div>
   );
 };

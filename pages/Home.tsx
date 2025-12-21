@@ -121,11 +121,11 @@ const Home: React.FC = () => {
           <i className="fa-solid fa-chart-line absolute -bottom-10 -left-10 text-[180px] text-white opacity-5 -rotate-12"></i>
         </section>
 
-        <AdPlaceholder className="mt-12" />
-        
-        <div className="mt-24 pt-16 border-t border-gray-200 dark:border-slate-800 mb-12">
+        <div className="mt-16 mb-24">
           <TopBannerAd />
         </div>
+
+        <AdPlaceholder className="mt-12" />
       </div>
     </div>
   );
