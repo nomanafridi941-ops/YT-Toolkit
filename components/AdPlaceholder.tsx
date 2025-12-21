@@ -9,6 +9,10 @@ interface AdPlaceholderProps {
 
 const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", className = "", type = 'none' }) => {
   const adContainerRef = useRef<HTMLDivElement>(null);
+  const sizes = {
+    banner: { width: 728, height: 90 },
+    sidebar: { width: 300, height: 250 }
+  } as const;
 
   useEffect(() => {
     if (type === 'none' || !adContainerRef.current) return;
@@ -115,7 +119,8 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
       <span className="text-[10px] font-black text-gray-300 dark:text-gray-600 uppercase tracking-[0.3em] mb-2">{label}</span>
       <div 
         ref={adContainerRef} 
-        className={`ad-container flex justify-center items-center ${type === 'banner' ? 'w-[728px] min-h-[90px]' : 'w-[300px] min-h-[250px]'} max-w-full`}
+        className={"ad-container flex justify-center items-center mx-auto"}
+        style={{ width: sizes[type as 'banner' | 'sidebar'].width, minHeight: sizes[type as 'banner' | 'sidebar'].height }}
       >
         {/* Ad scripts will inject content here */}
       </div>
