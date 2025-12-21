@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://yttoolkitpro.com/sitemap.xml
+Sitemap: https://yttoolkit.com/sitemap.xml
