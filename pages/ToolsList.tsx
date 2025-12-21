@@ -13,8 +13,6 @@ const ToolsList: React.FC = () => {
     ? TOOLS.filter(t => t.category === catId)
     : TOOLS;
 
-  const categories = Object.values(ToolCategory);
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
@@ -35,7 +33,7 @@ const ToolsList: React.FC = () => {
         >
           All
         </a>
-        {categories.map(cat => (
+        {Object.values(ToolCategory).map(cat => (
           <a
             key={cat}
             href={`#/category/${cat}`}
