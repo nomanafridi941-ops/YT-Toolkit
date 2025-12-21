@@ -1,10 +1,11 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { TOOLS } from '../constants';
 import { ToolCategory } from '../types';
 import ToolCard from '../components/ToolCard';
 import AdPlaceholder from '../components/AdPlaceholder';
+import { updateMetaTags } from '../utils/seo';
 
 const ToolsList: React.FC = () => {
   const { catId } = useParams<{ catId?: string }>();
@@ -12,6 +13,20 @@ const ToolsList: React.FC = () => {
   const filteredTools = catId 
     ? TOOLS.filter(t => t.category === catId)
     : TOOLS;
+
+  useEffect(() => {
+    if (catId) {
+      updateMetaTags(
+        `${catId} - Free YouTube Tools | YTToolKitPro`,
+        `Explore our collection of ${catId.toLowerCase()} for YouTube creators. Free, professional-grade tools with no login required.`
+      );
+    } else {
+      updateMetaTags(
+        'All YouTube Tools - Complete Toolkit | YTToolKitPro',
+        'Browse our complete library of 30+ free YouTube tools for SEO, thumbnails, calculators, and more. Everything you need to grow your channel.'
+      );
+    }
+  }, [catId]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

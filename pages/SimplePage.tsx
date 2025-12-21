@@ -1,6 +1,7 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import AdPlaceholder from '../components/AdPlaceholder';
+import { updateMetaTags } from '../utils/seo';
 
 interface SimplePageProps {
   title: string;
@@ -8,6 +9,13 @@ interface SimplePageProps {
 }
 
 const SimplePage: React.FC<SimplePageProps> = ({ title, content }) => {
+  useEffect(() => {
+    updateMetaTags(
+      `${title} - YTToolKitPro`,
+      `${title} page for YTToolKitPro - Free YouTube creator tools and resources.`
+    );
+  }, [title]);
+
   return (
     <div className="bg-gray-50 dark:bg-slate-900 min-h-screen transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 py-20">

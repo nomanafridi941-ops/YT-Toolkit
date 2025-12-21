@@ -7,6 +7,7 @@ import ThumbnailTool from '../tools/ThumbnailTool';
 import CalculatorTool from '../tools/CalculatorTool';
 import TemplateTool from '../tools/TemplateTool';
 import { CommentPicker, CPMLookup, UploadTimeTool, ThumbnailPreview } from '../tools/UtilityTools';
+import { updateMetaTags } from '../utils/seo';
 
 const ToolDetail: React.FC = () => {
   const { toolId } = useParams<{ toolId: string }>();
@@ -14,7 +15,10 @@ const ToolDetail: React.FC = () => {
 
   useEffect(() => {
     if (tool) {
-      document.title = `${tool.seoTitle} - YTToolKitPro`;
+      updateMetaTags(
+        `${tool.seoTitle} - YTToolKitPro`,
+        tool.seoDescription
+      );
       window.scrollTo(0, 0);
     }
   }, [tool]);

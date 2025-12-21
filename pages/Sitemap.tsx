@@ -1,11 +1,19 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import AdPlaceholder from '../components/AdPlaceholder';
 import { TOOLS } from '../constants';
 import { ToolCategory } from '../types';
+import { updateMetaTags } from '../utils/seo';
 
 const Sitemap: React.FC = () => {
   const categories = Object.values(ToolCategory);
+
+  useEffect(() => {
+    updateMetaTags(
+      'Sitemap - All Pages & Tools | YTToolKitPro',
+      'Complete sitemap of YTToolKitPro showing all pages, categories, and 30+ free YouTube tools.'
+    );
+  }, []);
 
   return (
     <div className="bg-gray-50 dark:bg-slate-900 min-h-screen transition-colors">

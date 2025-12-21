@@ -1,10 +1,18 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TOOLS } from '../constants';
 import ToolCard from '../components/ToolCard';
 import AdPlaceholder from '../components/AdPlaceholder';
+import { updateMetaTags } from '../utils/seo';
 
 const Home: React.FC = () => {
+  useEffect(() => {
+    updateMetaTags(
+      'YTToolKitPro - #1 Free YouTube Tools for Creators (SEO, AI, Revenue)',
+      'Access 30+ free professional YouTube tools: AI Title Generator, Thumbnail Downloader, SEO Checker, Earnings Calculator, and more. No login required. Grow your channel faster with YTToolKitPro.'
+    );
+  }, []);
+
   // Select a mix of high-demand tools for the homepage
   const popularTools = TOOLS.filter(t => [
     'thumbnail-downloader', 
