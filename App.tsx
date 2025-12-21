@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import TopBannerAd from './components/TopBannerAd';
 import Home from './pages/Home';
 import ToolsList from './pages/ToolsList';
 import ToolDetail from './pages/ToolDetail';
@@ -14,6 +15,7 @@ const App: React.FC = () => {
     <Router>
       <div className="flex flex-col min-h-screen transition-theme">
         <Header />
+        <TopBannerAd />
         
         <main className="flex-grow">
           <Routes>
