@@ -17,57 +17,72 @@ const SIZE_MAP: Record<Required<AdPlaceholderProps>['size'], string> = {
   '970x250': 'max-w-[970px] h-[250px]'
 };
 
+let adLoadDelay = 0;
+
 const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", className = "", size, adCode }) => {
   const sizeClass = size ? SIZE_MAP[size] : 'min-h-[100px]';
   const containerRef = useRef<HTMLDivElement>(null);
+  const loadedRef = useRef(false);
 
   useEffect(() => {
-    if (adCode && containerRef.current) {
-      try {
-        // Clear previous content
-        containerRef.current.innerHTML = '';
-        
-        // Parse the ad code to separate inline scripts and external scripts
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = adCode;
-        
-        // First, append non-script content
-        const nonScriptElements = Array.from(tempDiv.childNodes).filter(
-          node => node.nodeType !== 8 && (node.nodeType === 3 || (node.nodeType === 1 && (node as Element).tagName !== 'SCRIPT'))
-        );
-        
-        nonScriptElements.forEach(node => {
-          containerRef.current?.appendChild(node.cloneNode(true));
-        });
-        
-        // Then execute scripts in order
-        const scripts = tempDiv.querySelectorAll('script');
-        scripts.forEach((oldScript, index) => {
-          const newScript = document.createElement('script');
-          
-          if (oldScript.src) {
-            // External script
-            newScript.src = oldScript.src;
-            newScript.async = false; // Important: load serially
-            newScript.defer = false;
+    if (adCode && containerRef.current && !loadedRef.current) {
+      loadedRef.current = true;
+      
+      // Add staggered delay to prevent ad conflicts
+      const delay = adLoadDelay;
+      adLoadDelay += 500;
+      
+      setTimeout(() => {
+        try {
+          // Clear previous content
+          if (containerRef.current) {
+            containerRef.current.innerHTML = '';
             
-            // Copy attributes
-            Array.from(oldScript.attributes).forEach(attr => {
-              if (attr.name !== 'src') {
-                newScript.setAttribute(attr.name, attr.value);
-              }
+            // Parse the ad code to separate inline scripts and external scripts
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = adCode;
+            
+            // First, append non-script content
+            const nonScriptElements = Array.from(tempDiv.childNodes).filter(
+              node => node.nodeType !== 8 && (node.nodeType === 3 || (node.nodeType === 1 && (node as Element).tagName !== 'SCRIPT'))
+            );
+            
+            nonScriptElements.forEach(node => {
+              containerRef.current?.appendChild(node.cloneNode(true));
             });
-          } else if (oldScript.textContent) {
-            // Inline script
-            newScript.textContent = oldScript.textContent;
+            
+            // Then execute scripts in order
+            const scripts = tempDiv.querySelectorAll('script');
+            scripts.forEach((oldScript) => {
+              const newScript = document.createElement('script');
+              
+              if (oldScript.src) {
+                // External script
+                newScript.src = oldScript.src;
+                newScript.async = false;
+                newScript.defer = false;
+                newScript.type = 'text/javascript';
+                
+                // Copy attributes
+                Array.from(oldScript.attributes).forEach(attr => {
+                  if (attr.name !== 'src') {
+                    newScript.setAttribute(attr.name, attr.value);
+                  }
+                });
+              } else if (oldScript.textContent) {
+                // Inline script
+                newScript.textContent = oldScript.textContent;
+                newScript.type = 'text/javascript';
+              }
+              
+              // Append to container to ensure execution in correct context
+              containerRef.current?.appendChild(newScript);
+            });
           }
-          
-          // Append to container to ensure execution in correct context
-          containerRef.current?.appendChild(newScript);
-        });
-      } catch (error) {
-        console.error('Error loading ad:', error);
-      }
+        } catch (error) {
+          console.error('Error loading ad:', error);
+        }
+      }, delay);
     }
   }, [adCode]);
 
