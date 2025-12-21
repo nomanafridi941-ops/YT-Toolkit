@@ -119,7 +119,7 @@ const Home: React.FC = () => {
           <i className="fa-solid fa-chart-line absolute -bottom-10 -left-10 text-[180px] text-white opacity-5 -rotate-12"></i>
         </section>
 
-        <AdPlaceholder type="banner" className="mt-12" />
+        <AdPlaceholder type="banner" className="mt-12 mb-24" />
       </div>
     </div>
   );
