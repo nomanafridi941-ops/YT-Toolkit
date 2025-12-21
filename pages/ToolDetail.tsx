@@ -132,7 +132,9 @@ const ToolDetail: React.FC = () => {
 
             <AdPlaceholder type="sidebar" />
           </aside>
-        </div>
+          </div>
+
+          <AdPlaceholder type="banner" className="mt-12" />
       </div>
     </div>
   );
