@@ -123,7 +123,7 @@ const Home: React.FC = () => {
 
         <AdPlaceholder className="mt-12" />
         
-        <div className="mt-16 mb-8">
+        <div className="mt-24 pt-16 border-t border-gray-200 dark:border-slate-800 mb-12">
           <TopBannerAd />
         </div>
       </div>
