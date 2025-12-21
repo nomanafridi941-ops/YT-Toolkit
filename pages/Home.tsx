@@ -4,6 +4,7 @@ import { TOOLS } from '../constants';
 import ToolCard from '../components/ToolCard';
 import AdPlaceholder from '../components/AdPlaceholder';
 import TopBannerAd from '../components/TopBannerAd';
+import BottomBannerAd from '../components/BottomBannerAd';
 
 const Home: React.FC = () => {
   // Select a mix of high-demand tools for the homepage
@@ -126,7 +127,7 @@ const Home: React.FC = () => {
       {/* Bottom Banner Ad - Outside Container */}
       <div className="w-full bg-gray-50 dark:bg-[#0f172a] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <TopBannerAd />
+          <BottomBannerAd />
         </div>
       </div>
     </div>
