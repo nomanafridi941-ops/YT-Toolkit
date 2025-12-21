@@ -23,32 +23,51 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
 
   useEffect(() => {
     if (adCode && containerRef.current) {
-      // Clear previous content
-      containerRef.current.innerHTML = '';
-      
-      // Create a wrapper for the ad code
-      const wrapper = document.createElement('div');
-      wrapper.innerHTML = adCode;
-      
-      // Insert wrapper content
-      containerRef.current.appendChild(wrapper);
-      
-      // Execute any scripts in the ad code
-      const scripts = wrapper.querySelectorAll('script');
-      scripts.forEach(oldScript => {
-        const newScript = document.createElement('script');
-        newScript.text = oldScript.text;
-        newScript.src = oldScript.src;
-        newScript.async = oldScript.async;
-        newScript.defer = oldScript.defer;
+      try {
+        // Clear previous content
+        containerRef.current.innerHTML = '';
         
-        // Copy all attributes
-        Array.from(oldScript.attributes).forEach(attr => {
-          newScript.setAttribute(attr.name, attr.value);
+        // Parse the ad code to separate inline scripts and external scripts
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = adCode;
+        
+        // First, append non-script content
+        const nonScriptElements = Array.from(tempDiv.childNodes).filter(
+          node => node.nodeType !== 8 && (node.nodeType === 3 || (node.nodeType === 1 && (node as Element).tagName !== 'SCRIPT'))
+        );
+        
+        nonScriptElements.forEach(node => {
+          containerRef.current?.appendChild(node.cloneNode(true));
         });
         
-        oldScript.parentNode?.replaceChild(newScript, oldScript);
-      });
+        // Then execute scripts in order
+        const scripts = tempDiv.querySelectorAll('script');
+        scripts.forEach((oldScript, index) => {
+          const newScript = document.createElement('script');
+          
+          if (oldScript.src) {
+            // External script
+            newScript.src = oldScript.src;
+            newScript.async = false; // Important: load serially
+            newScript.defer = false;
+            
+            // Copy attributes
+            Array.from(oldScript.attributes).forEach(attr => {
+              if (attr.name !== 'src') {
+                newScript.setAttribute(attr.name, attr.value);
+              }
+            });
+          } else if (oldScript.textContent) {
+            // Inline script
+            newScript.textContent = oldScript.textContent;
+          }
+          
+          // Append to container to ensure execution in correct context
+          containerRef.current?.appendChild(newScript);
+        });
+      } catch (error) {
+        console.error('Error loading ad:', error);
+      }
     }
   }, [adCode]);
 
