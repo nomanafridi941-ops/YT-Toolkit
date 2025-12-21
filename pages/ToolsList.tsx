@@ -59,13 +59,6 @@ const ToolsList: React.FC = () => {
           <ToolCard key={tool.id} tool={tool} />
         ))}
       </div>
-
-      <AdPlaceholder 
-        size="728x90" 
-        label="Advertisement"
-        className="mt-12 mx-auto"
-        adCode={AD_CODES.banner728x90}
-      />
     </div>
   );
 };

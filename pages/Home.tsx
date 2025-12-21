@@ -124,13 +124,6 @@ const Home: React.FC = () => {
           <i className="fa-solid fa-play absolute -top-10 -right-10 text-[200px] text-white opacity-5 rotate-12"></i>
           <i className="fa-solid fa-chart-line absolute -bottom-10 -left-10 text-[180px] text-white opacity-5 -rotate-12"></i>
         </section>
-
-        <AdPlaceholder 
-          size="728x90" 
-          label="Advertisement - 728x90"
-          className="mt-12 mx-auto" 
-          adCode={AD_CODES.banner728x90}
-        />
       </div>
     </div>
   );
