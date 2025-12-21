@@ -54,7 +54,7 @@ const ToolsList: React.FC = () => {
         ))}
       </div>
 
-      <div className="w-full mt-12 mb-12">
+      <div className="mt-12 mb-12">
         <AdPlaceholder type="banner" />
       </div>
     </div>
