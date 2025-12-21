@@ -41,7 +41,7 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
       const atOptionsScript = document.createElement('script');
       atOptionsScript.type = 'text/javascript';
       atOptionsScript.innerHTML = `
-        window.atOptions = {
+        atOptions = {
           'key' : '${config.key}',
           'format' : 'iframe',
           'height' : ${config.height},
