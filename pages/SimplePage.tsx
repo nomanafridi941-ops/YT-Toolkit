@@ -1,5 +1,6 @@
 
 import React from 'react';
+import AdPlaceholder from '../components/AdPlaceholder';
 
 interface SimplePageProps {
   title: string;
@@ -11,9 +12,11 @@ const SimplePage: React.FC<SimplePageProps> = ({ title, content }) => {
     <div className="bg-gray-50 dark:bg-slate-900 min-h-screen transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 py-20">
         <h1 className="text-5xl font-black text-gray-900 dark:text-white mb-10 tracking-tight">{title}</h1>
+        <AdPlaceholder type="banner" className="mb-8" />
         <div className="prose prose-red dark:prose-invert max-w-none text-gray-600 dark:text-gray-400 space-y-8 bg-white dark:bg-slate-800 p-10 rounded-[40px] border border-gray-100 dark:border-slate-700 shadow-xl">
           {content}
         </div>
+        <AdPlaceholder type="banner" className="mt-10" />
       </div>
     </div>
   );
@@ -31,8 +34,8 @@ export const AboutContent = () => (
         <p className="text-sm">We respect your privacy. No accounts, no emails, no tracking.</p>
       </div>
       <div className="bg-gray-50 dark:bg-slate-900/50 p-6 rounded-2xl">
-        <h3 className="font-black text-red-600 mb-2">AI-Powered Tools</h3>
-        <p className="text-sm">Advanced algorithms provide the most accurate suggestions possible for creators.</p>
+        <h3 className="font-black text-red-600 mb-2">AI-Powered</h3>
+        <p className="text-sm">Using Gemini 3 models, we provide the most accurate suggestions possible for creators.</p>
       </div>
     </div>
   </div>
