@@ -24,7 +24,7 @@ const Sitemap: React.FC = () => {
               {['/', '/all-tools', '/about', '/contact', '/privacy', '/disclaimer', '/blog'].map(path => (
                 <a 
                   key={path}
-                  href={`#${path}`} 
+                  href={path} 
                   className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 hover:border-red-500 transition-all font-bold text-gray-800 dark:text-gray-200"
                 >
                   {path === '/' ? 'Home Page' : path.substring(1).split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
@@ -42,7 +42,7 @@ const Sitemap: React.FC = () => {
               {categories.map(cat => (
                 <a 
                   key={cat}
-                  href={`#/category/${cat}`} 
+                  href={`/category/${cat}`} 
                   className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 hover:border-red-500 transition-all font-bold text-gray-800 dark:text-gray-200"
                 >
                   {cat}
@@ -60,7 +60,7 @@ const Sitemap: React.FC = () => {
               {TOOLS.map(tool => (
                 <a 
                   key={tool.id}
-                  href={`#/tool/${tool.id}`} 
+                  href={`/tool/${tool.id}`} 
                   className="text-gray-600 dark:text-gray-400 hover:text-red-600 transition-colors text-sm font-medium flex items-center gap-2"
                 >
                   <i className="fa-solid fa-chevron-right text-[8px]"></i> {tool.name}

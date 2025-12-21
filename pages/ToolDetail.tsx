@@ -24,7 +24,7 @@ const ToolDetail: React.FC = () => {
       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 dark:bg-slate-900">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Tool Not Found</h1>
         <p className="text-gray-500 dark:text-gray-400 mb-8">The tool you're looking for doesn't exist.</p>
-        <a href="#/" className="bg-red-600 text-white px-8 py-3 rounded-lg font-bold">Go Back Home</a>
+        <a href="/" className="bg-red-600 text-white px-8 py-3 rounded-lg font-bold">Go Back Home</a>
       </div>
     );
   }
@@ -114,7 +114,7 @@ const ToolDetail: React.FC = () => {
             <div className="bg-red-600 rounded-3xl p-8 text-white shadow-xl shadow-red-600/20">
               <h3 className="text-2xl font-black mb-4">Pro Tips!</h3>
               <p className="text-red-100 mb-6">Maximize your CTR by using high-contrast colors in your thumbnails and punchy titles.</p>
-              <a href="#/category/SEO Tools" className="block text-center bg-white text-red-600 font-black py-4 rounded-2xl hover:bg-gray-100 transition-all">Explore SEO Suite</a>
+              <a href="/category/SEO Tools" className="block text-center bg-white text-red-600 font-black py-4 rounded-2xl hover:bg-gray-100 transition-all">Explore SEO Suite</a>
             </div>
 
             <div className="space-y-4">

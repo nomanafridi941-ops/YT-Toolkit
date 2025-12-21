@@ -31,22 +31,22 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-widest mb-6">Quick Tools</h3>
             <ul className="space-y-3">
-              <li><a href="#/category/SEO Tools" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">SEO Suite</a></li>
-              <li><a href="#/category/Calculators" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Revenue Calcs</a></li>
-              <li><a href="#/category/Thumbnail Tools" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Thumbnails</a></li>
-              <li><a href="#/category/Shorts Tools" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Shorts Tools</a></li>
-              <li><a href="#/all-tools" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm font-bold transition-colors">Browse 30+ Tools</a></li>
+              <li><a href="/category/SEO Tools" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">SEO Suite</a></li>
+              <li><a href="/category/Calculators" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Revenue Calcs</a></li>
+              <li><a href="/category/Thumbnail Tools" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Thumbnails</a></li>
+              <li><a href="/category/Shorts Tools" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Shorts Tools</a></li>
+              <li><a href="/all-tools" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm font-bold transition-colors">Browse 30+ Tools</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-widest mb-6">Support</h3>
             <ul className="space-y-3">
-              <li><a href="#/about" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Our Story</a></li>
-              <li><a href="#/contact" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Contact</a></li>
-              <li><a href="#/privacy" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Privacy</a></li>
-              <li><a href="#/sitemap" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Sitemap</a></li>
-              <li><a href="#/disclaimer" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Disclaimer</a></li>
+              <li><a href="/about" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Our Story</a></li>
+              <li><a href="/contact" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Contact</a></li>
+              <li><a href="/privacy" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Privacy</a></li>
+              <li><a href="/sitemap" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Sitemap</a></li>
+              <li><a href="/disclaimer" className="text-gray-500 dark:text-gray-400 hover:text-red-600 text-sm transition-colors">Disclaimer</a></li>
             </ul>
           </div>
         </div>
