@@ -17,6 +17,18 @@ export const AD_CODES = {
   src="https://www.highperformanceformat.com/6a8e9b13351ca0fd75fc9383ddefaf9c/invoke.js"
 ></script>`,
 
-  // 300x600 Sidebar (Placeholder - add real code when available)
-  sidebar300x600: '',
+  // 300x250 Sidebar
+  sidebar300x250: `<script type="text/javascript">
+  atOptions = {
+  	'key' : 'ec6129f4b297397628d186246dfeed9c',
+  	'format' : 'iframe',
+  	'height' : 250,
+  	'width' : 300,
+  	'params' : {}
+  };
+</script>
+<script
+  type="text/javascript"
+  src="https://www.highperformanceformat.com/ec6129f4b297397628d186246dfeed9c/invoke.js"
+></script>`,
 };

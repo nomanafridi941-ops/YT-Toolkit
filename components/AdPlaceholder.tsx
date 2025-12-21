@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface AdPlaceholderProps {
   label?: string;
@@ -19,33 +19,49 @@ const SIZE_MAP: Record<Required<AdPlaceholderProps>['size'], string> = {
 
 const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", className = "", size, adCode }) => {
   const sizeClass = size ? SIZE_MAP[size] : 'min-h-[100px]';
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (adCode && window.atOptions) {
-      // Trigger ad network script if available
-      try {
-        const script = document.querySelector('script[src*="highperformanceformat"]');
-        if (script && typeof (window as any).atOptions !== 'undefined') {
-          // Re-initialize ad if needed
-        }
-      } catch (e) {
-        // Silently handle ad script errors
-      }
+    if (adCode && containerRef.current) {
+      // Clear previous content
+      containerRef.current.innerHTML = '';
+      
+      // Create a wrapper for the ad code
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = adCode;
+      
+      // Insert wrapper content
+      containerRef.current.appendChild(wrapper);
+      
+      // Execute any scripts in the ad code
+      const scripts = wrapper.querySelectorAll('script');
+      scripts.forEach(oldScript => {
+        const newScript = document.createElement('script');
+        newScript.text = oldScript.text;
+        newScript.src = oldScript.src;
+        newScript.async = oldScript.async;
+        newScript.defer = oldScript.defer;
+        
+        // Copy all attributes
+        Array.from(oldScript.attributes).forEach(attr => {
+          newScript.setAttribute(attr.name, attr.value);
+        });
+        
+        oldScript.parentNode?.replaceChild(newScript, oldScript);
+      });
     }
   }, [adCode]);
 
   return (
-    <div className={`w-full ${sizeClass} flex items-center justify-center overflow-hidden ${className}`}>
-      {adCode ? (
-        <div 
-          dangerouslySetInnerHTML={{ __html: adCode }}
-          className="w-full h-full"
-        />
-      ) : (
+    <div 
+      ref={containerRef}
+      className={`w-full ${sizeClass} flex items-center justify-center overflow-hidden ${className}`}
+    >
+      {!adCode && (
         <div className="w-full h-full bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center p-4">
           <div className="text-center">
             <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">{label}</p>
-            <p className="text-[10px] text-gray-400">AdSense Ready Space</p>
+            <p className="text-[10px] text-gray-400">Ad Space</p>
           </div>
         </div>
       )}

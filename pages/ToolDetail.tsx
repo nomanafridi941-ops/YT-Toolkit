@@ -135,9 +135,9 @@ const ToolDetail: React.FC = () => {
             </div>
 
             <AdPlaceholder 
-              size="300x600" 
+              size="300x250" 
               label="Sidebar Advertisement"
-              adCode={AD_CODES.sidebar300x600}
+              adCode={AD_CODES.sidebar300x250}
             />
           </aside>
         </div>
