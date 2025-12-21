@@ -3,6 +3,7 @@ import React from 'react';
 import { TOOLS } from '../constants';
 import ToolCard from '../components/ToolCard';
 import AdPlaceholder from '../components/AdPlaceholder';
+import { AD_CODES } from '../config/adCodes';
 
 const Home: React.FC = () => {
   // Select a mix of high-demand tools for the homepage
@@ -66,7 +67,12 @@ const Home: React.FC = () => {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AdPlaceholder size="728x90" label="Advertisement - 728x90" className="mb-24 mx-auto" />
+        <AdPlaceholder 
+          size="728x90" 
+          label="Advertisement - 728x90" 
+          className="mb-24 mx-auto" 
+          adCode={AD_CODES.banner728x90}
+        />
 
         {/* Popular Tools Section */}
         <section className="mb-32">

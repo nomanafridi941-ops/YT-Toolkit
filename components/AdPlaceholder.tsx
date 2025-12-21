@@ -1,10 +1,11 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface AdPlaceholderProps {
   label?: string;
   className?: string;
   size?: '728x90' | '300x250' | '336x280' | '300x600' | '320x100' | '970x250';
+  adCode?: string;
 }
 
 const SIZE_MAP: Record<Required<AdPlaceholderProps>['size'], string> = {
@@ -16,14 +17,38 @@ const SIZE_MAP: Record<Required<AdPlaceholderProps>['size'], string> = {
   '970x250': 'max-w-[970px] h-[250px]'
 };
 
-const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", className = "", size }) => {
+const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", className = "", size, adCode }) => {
   const sizeClass = size ? SIZE_MAP[size] : 'min-h-[100px]';
+
+  useEffect(() => {
+    if (adCode && window.atOptions) {
+      // Trigger ad network script if available
+      try {
+        const script = document.querySelector('script[src*="highperformanceformat"]');
+        if (script && typeof (window as any).atOptions !== 'undefined') {
+          // Re-initialize ad if needed
+        }
+      } catch (e) {
+        // Silently handle ad script errors
+      }
+    }
+  }, [adCode]);
+
   return (
-    <div className={`w-full ${sizeClass} bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center p-4 overflow-hidden ${className}`}>
-      <div className="text-center">
-        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">{label}</p>
-        <p className="text-[10px] text-gray-400">AdSense Ready Space</p>
-      </div>
+    <div className={`w-full ${sizeClass} flex items-center justify-center overflow-hidden ${className}`}>
+      {adCode ? (
+        <div 
+          dangerouslySetInnerHTML={{ __html: adCode }}
+          className="w-full h-full"
+        />
+      ) : (
+        <div className="w-full h-full bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center p-4">
+          <div className="text-center">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">{label}</p>
+            <p className="text-[10px] text-gray-400">AdSense Ready Space</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
