@@ -4,65 +4,75 @@ import React, { useEffect, useRef } from 'react';
 interface AdPlaceholderProps {
   label?: string;
   className?: string;
-  size?: '728x90' | '300x250' | '336x280' | '300x600' | '320x100' | '970x250';
-  adCode?: string;
+  type?: 'banner' | 'sidebar' | 'none';
 }
 
-const SIZE_MAP: Record<Required<AdPlaceholderProps>['size'], string> = {
-  '728x90': 'max-w-[728px] h-[90px]',
-  '300x250': 'max-w-[300px] h-[250px]',
-  '336x280': 'max-w-[336px] h-[280px]',
-  '300x600': 'max-w-[300px] h-[600px]',
-  '320x100': 'max-w-[320px] h-[100px]',
-  '970x250': 'max-w-[970px] h-[250px]'
-};
-
-const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", className = "", size, adCode }) => {
-  const sizeClass = size ? SIZE_MAP[size] : 'min-h-[100px]';
-  const adRef = useRef<HTMLDivElement>(null);
+const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", className = "", type = 'none' }) => {
+  const adContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (adCode && adRef.current) {
-      const container = adRef.current;
-      
-      // Extract scripts from ad code
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(adCode, 'text/html');
-      const scripts = doc.querySelectorAll('script');
-      
-      // Execute each script
-      scripts.forEach((script) => {
-        const newScript = document.createElement('script');
-        
-        if (script.src) {
-          newScript.src = script.src;
-          newScript.type = 'text/javascript';
-        } else if (script.textContent) {
-          newScript.textContent = script.textContent;
-          newScript.type = 'text/javascript';
-        }
-        
-        // Add script to body for proper execution
-        document.body.appendChild(newScript);
-      });
-    }
-  }, [adCode]);
+    if (type === 'none' || !adContainerRef.current) return;
 
-  if (adCode) {
+    // Clear previous content if any
+    adContainerRef.current.innerHTML = '';
+
+    const adConfig = {
+      banner: {
+        key: '6a8e9b13351ca0fd75fc9383ddefaf9c',
+        height: 90,
+        width: 728
+      },
+      sidebar: {
+        key: 'ec6129f4b297397628d186246dfeed9c',
+        height: 250,
+        width: 300
+      }
+    };
+
+    const config = adConfig[type];
+
+    // 1. Create the configuration script for Adstera
+    const atOptionsScript = document.createElement('script');
+    atOptionsScript.type = 'text/javascript';
+    atOptionsScript.innerHTML = `
+      window.atOptions = {
+        'key' : '${config.key}',
+        'format' : 'iframe',
+        'height' : ${config.height},
+        'width' : ${config.width},
+        'params' : {}
+      };
+    `;
+    adContainerRef.current.appendChild(atOptionsScript);
+
+    // 2. Create the invocation script
+    const invokeScript = document.createElement('script');
+    invokeScript.type = 'text/javascript';
+    invokeScript.src = `https://a.adserverrc.com/${config.key}/invoke.js`;
+    adContainerRef.current.appendChild(invokeScript);
+
+  }, [type]);
+
+  if (type === 'none') {
     return (
-      <div className={`w-full ${sizeClass} flex items-center justify-center ${className}`}>
-        <div ref={adRef} style={{ width: '100%', display: 'flex', justifyContent: 'center' }} />
+      <div className={`bg-gray-100 dark:bg-slate-800/50 border-2 border-dashed border-gray-300 dark:border-slate-700 rounded-lg flex items-center justify-center p-4 min-h-[100px] overflow-hidden ${className}`}>
+        <div className="text-center">
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">{label}</p>
+          <p className="text-[10px] text-gray-400">Ad Slot Placeholder</p>
+        </div>
       </div>
     );
   }
 
+  // Flex container to center the iframe returned by the ad network
   return (
-    <div className={`w-full ${sizeClass} flex items-center justify-center overflow-hidden ${className}`}>
-      <div className="w-full h-full bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center p-4">
-        <div className="text-center">
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">{label}</p>
-          <p className="text-[10px] text-gray-400">Ad Space</p>
-        </div>
+    <div className={`flex flex-col items-center justify-center overflow-hidden my-8 ${className}`}>
+      <span className="text-[10px] font-black text-gray-300 dark:text-gray-600 uppercase tracking-[0.3em] mb-2">{label}</span>
+      <div 
+        ref={adContainerRef} 
+        className={`ad-container flex justify-center items-center w-full min-h-[${type === 'banner' ? '90px' : '250px'}]`}
+      >
+        {/* Ad scripts will inject content here */}
       </div>
     </div>
   );
