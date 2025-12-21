@@ -31,29 +31,47 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
 
     const config = adConfig[type];
 
-    // 1. Create the configuration script for Adstera
-    const atOptionsScript = document.createElement('script');
-    atOptionsScript.type = 'text/javascript';
-    atOptionsScript.innerHTML = `
-      window.atOptions = {
-        'key' : '${config.key}',
-        'format' : 'iframe',
-        'height' : ${config.height},
-        'width' : ${config.width},
-        'params' : {}
-      };
-    `;
-    adContainerRef.current.appendChild(atOptionsScript);
-
-    // 2. Create the invocation script (slight delay to ensure atOptions is set)
-    const invokeScript = document.createElement('script');
-    invokeScript.type = 'text/javascript';
-    invokeScript.src = `https://www.highperformanceformat.com/${config.key}/invoke.js`;
-    invokeScript.async = true;
-    setTimeout(() => {
+    const loadAd = (attempt: number) => {
       if (!adContainerRef.current) return;
-      adContainerRef.current.appendChild(invokeScript);
-    }, 50);
+
+      // Reset container before each attempt
+      adContainerRef.current.innerHTML = '';
+
+      // 1. Create the configuration script for Adstera
+      const atOptionsScript = document.createElement('script');
+      atOptionsScript.type = 'text/javascript';
+      atOptionsScript.innerHTML = `
+        window.atOptions = {
+          'key' : '${config.key}',
+          'format' : 'iframe',
+          'height' : ${config.height},
+          'width' : ${config.width},
+          'params' : {}
+        };
+      `;
+      adContainerRef.current.appendChild(atOptionsScript);
+
+      // 2. Create the invocation script (slight delay to ensure atOptions is set)
+      const invokeScript = document.createElement('script');
+      invokeScript.type = 'text/javascript';
+      invokeScript.src = `https://www.highperformanceformat.com/${config.key}/invoke.js`;
+      invokeScript.async = true;
+      setTimeout(() => {
+        if (!adContainerRef.current) return;
+        adContainerRef.current.appendChild(invokeScript);
+      }, 50);
+
+      // 3. Fallback: retry if iframe not injected
+      setTimeout(() => {
+        if (!adContainerRef.current) return;
+        const hasIframe = adContainerRef.current.querySelector('iframe');
+        if (!hasIframe && attempt < 3) {
+          loadAd(attempt + 1);
+        }
+      }, 1500);
+    };
+
+    loadAd(1);
 
   }, [type]);
 
