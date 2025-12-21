@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface AdPlaceholderProps {
   label?: string;
@@ -19,11 +19,39 @@ const SIZE_MAP: Record<Required<AdPlaceholderProps>['size'], string> = {
 
 const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", className = "", size, adCode }) => {
   const sizeClass = size ? SIZE_MAP[size] : 'min-h-[100px]';
+  const adRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (adCode && adRef.current) {
+      const container = adRef.current;
+      
+      // Extract scripts from ad code
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(adCode, 'text/html');
+      const scripts = doc.querySelectorAll('script');
+      
+      // Execute each script
+      scripts.forEach((script) => {
+        const newScript = document.createElement('script');
+        
+        if (script.src) {
+          newScript.src = script.src;
+          newScript.type = 'text/javascript';
+        } else if (script.textContent) {
+          newScript.textContent = script.textContent;
+          newScript.type = 'text/javascript';
+        }
+        
+        // Add script to body for proper execution
+        document.body.appendChild(newScript);
+      });
+    }
+  }, [adCode]);
 
   if (adCode) {
     return (
       <div className={`w-full ${sizeClass} flex items-center justify-center ${className}`}>
-        <div dangerouslySetInnerHTML={{ __html: adCode }} />
+        <div ref={adRef} style={{ width: '100%', display: 'flex', justifyContent: 'center' }} />
       </div>
     );
   }
