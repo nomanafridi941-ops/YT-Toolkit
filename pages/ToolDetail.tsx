@@ -2,8 +2,8 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { TOOLS } from '../constants';
-import { AD_CODES } from '../config/adCodes';
 import AdPlaceholder from '../components/AdPlaceholder';
+import TopBannerAd from '../components/TopBannerAd';
 import ThumbnailTool from '../tools/ThumbnailTool';
 import CalculatorTool from '../tools/CalculatorTool';
 import TemplateTool from '../tools/TemplateTool';
@@ -75,11 +75,7 @@ const ToolDetail: React.FC = () => {
           <div className="lg:col-span-8 space-y-12">
             <section>{renderToolUI()}</section>
             
-            <AdPlaceholder 
-              size="728x90" 
-              label="Advertisement"
-              adCode={AD_CODES.banner728x90}
-            />
+            <AdPlaceholder />
 
             {/* Rich SEO Content Section */}
             <section className="bg-white dark:bg-slate-800 p-8 md:p-12 rounded-[40px] border border-gray-100 dark:border-slate-700 shadow-sm transition-theme">
@@ -133,7 +129,13 @@ const ToolDetail: React.FC = () => {
                 ))}
               </div>
             </div>
+
+            <AdPlaceholder className="min-h-[400px]" />
           </aside>
+        </div>
+
+        <div className="mt-16 mb-8">
+          <TopBannerAd />
         </div>
       </div>
     </div>

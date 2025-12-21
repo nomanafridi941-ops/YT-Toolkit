@@ -122,6 +122,10 @@ const Home: React.FC = () => {
         </section>
 
         <AdPlaceholder className="mt-12" />
+        
+        <div className="mt-16 mb-8">
+          <TopBannerAd />
+        </div>
       </div>
     </div>
   );
