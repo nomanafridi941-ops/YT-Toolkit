@@ -74,9 +74,11 @@ const ToolDetail: React.FC = () => {
           <div className="lg:col-span-8 space-y-12">
             <section>{renderToolUI()}</section>
             
+                          <AdPlaceholder type="banner" className="mb-8" />
+
+
             {/* Rich SEO Content Section */}
             <section className="bg-white dark:bg-slate-800 p-8 md:p-12 rounded-[40px] border border-gray-100 dark:border-slate-700 shadow-sm transition-theme">
-              <AdPlaceholder type="banner" className="mb-8" />
               <h2 className="text-2xl md:text-3xl font-black mb-8 text-gray-900 dark:text-white border-l-4 border-red-600 pl-4 uppercase tracking-tight">Everything You Need to Know</h2>
               <div 
                 className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-400 font-medium leading-relaxed"
