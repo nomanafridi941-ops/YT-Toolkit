@@ -79,7 +79,7 @@ const TemplateTool: React.FC<TemplateToolProps> = ({ toolId, placeholder, button
 
       case 'description-generator':
         generated = [
-          `--- VIDEO SUMMARY ---\nIn today's video, we are diving deep into ${topic}. I'll show you exactly how to master this niche in ${year} without making the common mistakes most beginners do.\n\n--- TIMESTAMPS ---\n0:00 Intro\n1:20 Getting Started with ${topic}\n4:45 Pro Secret revealed\n8:10 Mistakes to avoid\n12:30 Conclusion\n\n--- RESOURCES ---\nCheck out our website: https://yttoolkitpro.com\nJoin the newsletter: [Your Link]\n\n#${topic.replace(/\s/g,'')} #YouTubeTips #Growth`
+          `--- VIDEO SUMMARY ---\nIn today's video, we are diving deep into ${topic}. I'll show you exactly how to master this niche in ${year} without making the common mistakes most beginners do.\n\n--- TIMESTAMPS ---\n0:00 Intro\n1:20 Getting Started with ${topic}\n4:45 Pro Secret revealed\n8:10 Mistakes to avoid\n12:30 Conclusion\n\n--- RESOURCES ---\nCheck out our website: https://yttoolkit.xyz\nJoin the newsletter: [Your Link]\n\n#${topic.replace(/\s/g,'')} #YouTubeTips #Growth`
         ];
         break;
 

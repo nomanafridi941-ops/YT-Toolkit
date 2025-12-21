@@ -45,7 +45,7 @@ const Header: React.FC = () => {
                 {categories.map((cat) => (
                   <a
                     key={cat}
-                    href={`/category/${cat}`}
+                    href={`#/category/${cat}`}
                     className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-red-600 transition-colors"
                   >
                     {cat}
@@ -92,7 +92,7 @@ const Header: React.FC = () => {
             {categories.map((cat) => (
               <a
                 key={cat}
-                href={`/category/${cat}`}
+                href={`#/category/${cat}`}
                 onClick={() => setIsMenuOpen(false)}
                 className="px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
               >

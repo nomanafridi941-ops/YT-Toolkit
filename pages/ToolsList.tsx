@@ -43,7 +43,7 @@ const ToolsList: React.FC = () => {
 
       <div className="flex flex-wrap justify-center gap-2 mb-12">
         <a 
-          href="#/all-tools"
+          href="/all-tools"
           className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${!catId ? 'bg-red-600 text-white' : 'bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-slate-700 hover:border-red-200'}`}
         >
           All

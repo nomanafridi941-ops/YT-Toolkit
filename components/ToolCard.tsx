@@ -9,7 +9,7 @@ interface ToolCardProps {
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
   return (
     <a 
-      href={`/tool/${tool.id}`}
+      href={`#/tool/${tool.id}`}
       className="group block bg-white dark:bg-slate-800 rounded-2xl p-6 border border-gray-200 dark:border-slate-700 hover:border-red-500 dark:hover:border-red-500 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-300 h-full"
     >
       <div className="w-14 h-14 bg-red-50 dark:bg-red-900/10 text-red-600 dark:text-red-500 rounded-xl flex items-center justify-center mb-5 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm">
