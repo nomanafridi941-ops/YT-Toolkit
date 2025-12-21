@@ -48,7 +48,8 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
     // 2. Create the invocation script
     const invokeScript = document.createElement('script');
     invokeScript.type = 'text/javascript';
-    invokeScript.src = `https://a.adserverrc.com/${config.key}/invoke.js`;
+    invokeScript.src = `https://www.highperformanceformat.com/${config.key}/invoke.js`;
+    invokeScript.async = true;
     adContainerRef.current.appendChild(invokeScript);
 
   }, [type]);
