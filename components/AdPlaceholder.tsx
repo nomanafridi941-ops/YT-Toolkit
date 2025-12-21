@@ -57,9 +57,20 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
       invokeScript.src = `https://www.highperformanceformat.com/${config.key}/invoke.js`;
       invokeScript.async = true;
       invokeScript.onload = () => {
-        // Cleanup to avoid global collisions with subsequent loads
-        try { (window as any).atOptions = undefined; } catch {}
-        if (done) done();
+        // Defer chain resolution until iframe detected or timeout
+        const start = Date.now();
+        const check = () => {
+          if (!adContainerRef.current) return done && done();
+          const hasIframe = adContainerRef.current.querySelector('iframe');
+          if (hasIframe) {
+            if (done) done();
+          } else if (Date.now() - start < 2000) {
+            setTimeout(check, 100);
+          } else {
+            if (done) done();
+          }
+        };
+        check();
       };
       setTimeout(() => {
         if (!adContainerRef.current) return;
@@ -74,7 +85,6 @@ const AdPlaceholder: React.FC<AdPlaceholderProps> = ({ label = "Advertisement", 
           loadAd(attempt + 1, done);
         } else if (!hasIframe && attempt >= 3) {
           // Give up but continue chain
-          try { (window as any).atOptions = undefined; } catch {}
           if (done) done();
         }
       }, 1500);
