@@ -67,8 +67,6 @@ const Home: React.FC = () => {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AdPlaceholder size="728x90" label="Advertisement - 728x90" className="mb-24 mx-auto" />
-
         {/* Popular Tools Section */}
         <div className="mt-8 mb-16">
           <TopBannerAd />
