@@ -97,7 +97,7 @@ const Home: React.FC = () => {
           <div className="bg-white dark:bg-slate-800 p-10 rounded-[40px] border border-gray-100 dark:border-slate-700 shadow-sm">
             <div className="w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center text-2xl mb-8 shadow-lg shadow-red-600/20"><i className="fa-solid fa-microchip"></i></div>
             <h3 className="text-2xl font-black mb-4 dark:text-white">AI Optimization</h3>
-            <p className="text-gray-500 dark:text-gray-400 font-medium">Leveraging Gemini 3 for ultra-accurate title, tag, and script generation.</p>
+            <p className="text-gray-500 dark:text-gray-400 font-medium">Advanced algorithms for ultra-accurate title, tag, and script generation.</p>
           </div>
           <div className="bg-white dark:bg-slate-800 p-10 rounded-[40px] border border-gray-100 dark:border-slate-700 shadow-sm">
             <div className="w-14 h-14 bg-gray-900 dark:bg-slate-700 text-white rounded-2xl flex items-center justify-center text-2xl mb-8 shadow-lg"><i className="fa-solid fa-lock-open"></i></div>
@@ -125,7 +125,12 @@ const Home: React.FC = () => {
           <i className="fa-solid fa-chart-line absolute -bottom-10 -left-10 text-[180px] text-white opacity-5 -rotate-12"></i>
         </section>
 
-        <AdPlaceholder className="mt-12" />
+        <AdPlaceholder 
+          size="728x90" 
+          label="Advertisement - 728x90"
+          className="mt-12 mx-auto" 
+          adCode={AD_CODES.banner728x90}
+        />
       </div>
     </div>
   );

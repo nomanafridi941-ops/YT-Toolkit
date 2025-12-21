@@ -5,6 +5,7 @@ import { TOOLS } from '../constants';
 import { ToolCategory } from '../types';
 import ToolCard from '../components/ToolCard';
 import AdPlaceholder from '../components/AdPlaceholder';
+import { AD_CODES } from '../config/adCodes';
 
 const ToolsList: React.FC = () => {
   const { catId } = useParams<{ catId?: string }>();
@@ -46,7 +47,12 @@ const ToolsList: React.FC = () => {
         ))}
       </div>
 
-      <AdPlaceholder className="mb-12" />
+      <AdPlaceholder 
+        size="728x90" 
+        label="Advertisement"
+        className="mb-12 mx-auto"
+        adCode={AD_CODES.banner728x90}
+      />
 
       <div className="tool-grid">
         {filteredTools.map(tool => (
@@ -54,7 +60,12 @@ const ToolsList: React.FC = () => {
         ))}
       </div>
 
-      <AdPlaceholder className="mt-12" />
+      <AdPlaceholder 
+        size="728x90" 
+        label="Advertisement"
+        className="mt-12 mx-auto"
+        adCode={AD_CODES.banner728x90}
+      />
     </div>
   );
 };

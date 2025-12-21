@@ -31,8 +31,8 @@ export const AboutContent = () => (
         <p className="text-sm">We respect your privacy. No accounts, no emails, no tracking.</p>
       </div>
       <div className="bg-gray-50 dark:bg-slate-900/50 p-6 rounded-2xl">
-        <h3 className="font-black text-red-600 mb-2">AI-Powered</h3>
-        <p className="text-sm">Using Gemini 3 models, we provide the most accurate suggestions possible for creators.</p>
+        <h3 className="font-black text-red-600 mb-2">AI-Powered Tools</h3>
+        <p className="text-sm">Advanced algorithms provide the most accurate suggestions possible for creators.</p>
       </div>
     </div>
   </div>

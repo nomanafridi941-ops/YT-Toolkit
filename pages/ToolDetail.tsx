@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { TOOLS } from '../constants';
+import { AD_CODES } from '../config/adCodes';
 import AdPlaceholder from '../components/AdPlaceholder';
 import ThumbnailTool from '../tools/ThumbnailTool';
 import CalculatorTool from '../tools/CalculatorTool';
@@ -74,7 +75,11 @@ const ToolDetail: React.FC = () => {
           <div className="lg:col-span-8 space-y-12">
             <section>{renderToolUI()}</section>
             
-            <AdPlaceholder />
+            <AdPlaceholder 
+              size="728x90" 
+              label="Advertisement"
+              adCode={AD_CODES.banner728x90}
+            />
 
             {/* Rich SEO Content Section */}
             <section className="bg-white dark:bg-slate-800 p-8 md:p-12 rounded-[40px] border border-gray-100 dark:border-slate-700 shadow-sm transition-theme">
@@ -129,7 +134,11 @@ const ToolDetail: React.FC = () => {
               </div>
             </div>
 
-            <AdPlaceholder className="min-h-[400px]" />
+            <AdPlaceholder 
+              size="300x600" 
+              label="Sidebar Advertisement"
+              adCode={AD_CODES.sidebar300x600}
+            />
           </aside>
         </div>
       </div>
