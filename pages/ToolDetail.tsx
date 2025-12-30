@@ -126,7 +126,7 @@ const ToolDetail: React.FC = () => {
               <h3 className="text-sm font-black text-gray-400 uppercase tracking-widest px-2">Related Tools</h3>
               <div className="grid gap-3">
                 {relatedTools.map(t => (
-                  <a key={t.id} href={`#/tool/${t.id}`} className="group flex items-center gap-4 p-4 bg-white dark:bg-slate-800 border border-transparent hover:border-red-500 dark:hover:border-red-500 rounded-2xl transition-all shadow-sm">
+                  <a key={t.id} href={`/tool/${t.id}`} className="group flex items-center gap-4 p-4 bg-white dark:bg-slate-800 border border-transparent hover:border-red-500 dark:hover:border-red-500 rounded-2xl transition-all shadow-sm">
                     <div className="w-10 h-10 bg-red-50 dark:bg-red-900/10 text-red-600 rounded-xl flex items-center justify-center transition-colors group-hover:bg-red-600 group-hover:text-white"><i className={t.icon}></i></div>
                     <span className="font-bold text-gray-800 dark:text-gray-200 group-hover:text-red-600 transition-colors">{t.name}</span>
                   </a>

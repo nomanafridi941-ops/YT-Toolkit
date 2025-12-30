@@ -51,7 +51,7 @@ const ToolsList: React.FC = () => {
         {Object.values(ToolCategory).map(cat => (
           <a
             key={cat}
-            href={`#/category/${cat}`}
+            href={`/category/${cat}`}
             className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${catId === cat ? 'bg-red-600 text-white shadow-lg shadow-red-500/20' : 'bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-slate-700 hover:border-red-200'}`}
           >
             {cat}

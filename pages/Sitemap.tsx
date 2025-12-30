@@ -51,9 +51,9 @@ const Sitemap: React.FC = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {categories.map(cat => (
-                <a 
+                <a
                   key={cat}
-                  href={`#/category/${cat}`} 
+                  href={`/category/${cat}`}
                   className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 hover:border-red-500 transition-all font-bold text-gray-800 dark:text-gray-200"
                 >
                   {cat}
@@ -69,9 +69,9 @@ const Sitemap: React.FC = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
               {TOOLS.map(tool => (
-                <a 
+                <a
                   key={tool.id}
-                  href={`#/tool/${tool.id}`} 
+                  href={`/tool/${tool.id}`}
                   className="text-gray-600 dark:text-gray-400 hover:text-red-600 transition-colors text-sm font-medium flex items-center gap-2"
                 >
                   <i className="fa-solid fa-chevron-right text-[8px]"></i> {tool.name}
