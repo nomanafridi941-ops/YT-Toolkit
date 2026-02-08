@@ -8,6 +8,8 @@ import ToolsList from './pages/ToolsList';
 import ToolDetail from './pages/ToolDetail';
 import Sitemap from './pages/Sitemap';
 import SimplePage, { AboutContent, PrivacyContent } from './pages/SimplePage';
+import Blog from './pages/Blog';
+import LandingAd from './pages/LandingAd';
 
 const App: React.FC = () => {
   return (
@@ -26,7 +28,8 @@ const App: React.FC = () => {
             <Route path="/privacy" element={<SimplePage title="Privacy Policy" content={<PrivacyContent />} />} />
             <Route path="/disclaimer" element={<SimplePage title="Disclaimer" content={<p>All tools on this website are provided "as is" without warranty of any kind. Use them at your own risk. This site is not affiliated with YouTube or Google LLC.</p>} />} />
             <Route path="/contact" element={<SimplePage title="Contact Us" content={<p>If you have any queries, please reach out to us at <strong>support@yttoolkit.xyz</strong>. We usually respond within 24-48 hours.</p>} />} />
-            <Route path="/blog" element={<SimplePage title="Creator Blog" content={<p>Our blog is coming soon! Stay tuned for the latest YouTube growth tips, SEO secrets, and industry news.</p>} />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/ad-landing" element={<LandingAd />} />
           </Routes>
         </main>
 
