@@ -55,7 +55,7 @@ export const ThumbnailPreview: React.FC = () => {
             <div className="w-full max-w-[360px] mx-auto bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-100 dark:border-slate-700 transition-theme">
                 <div className="aspect-video bg-gray-200 dark:bg-slate-900 relative group overflow-hidden">
                   {image ? (
-                    <img src={image} className="w-full h-full object-cover" alt="Preview" />
+                    <img src={image} className="w-full h-full object-cover" alt="Preview" loading="lazy" />
                   ) : (
                     <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-2">
                       <i className="fa-solid fa-image text-4xl opacity-20"></i>

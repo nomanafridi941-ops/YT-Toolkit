@@ -1,3 +1,28 @@
+  // Add FAQ schema for SEO
+  useEffect(() => {
+    if (tool && tool.faqs && tool.faqs.length > 0) {
+      const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': tool.faqs.map(faq => ({
+          '@type': 'Question',
+          'name': faq.question,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': faq.answer
+          }
+        }))
+      };
+      let script = document.getElementById('faq-schema');
+      if (!script) {
+        script = document.createElement('script');
+        script.id = 'faq-schema';
+        script.type = 'application/ld+json';
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(faqSchema);
+    }
+  }, [tool]);
 
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';

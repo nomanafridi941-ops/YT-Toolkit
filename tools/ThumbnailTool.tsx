@@ -53,6 +53,7 @@ const ThumbnailTool: React.FC = () => {
                src={`https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`} 
                alt="Thumbnail HD" 
                className="w-full rounded-lg mb-4 bg-gray-100 dark:bg-slate-900"
+               loading="lazy"
                onError={(e) => {
                  (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${videoID}/0.jpg`;
                }}
@@ -73,6 +74,7 @@ const ThumbnailTool: React.FC = () => {
                src={`https://img.youtube.com/vi/${videoID}/sddefault.jpg`} 
                alt="Thumbnail SD" 
                className="w-full rounded-lg mb-4 bg-gray-100 dark:bg-slate-900"
+               loading="lazy"
              />
              <a 
                href={`https://img.youtube.com/vi/${videoID}/sddefault.jpg`} 

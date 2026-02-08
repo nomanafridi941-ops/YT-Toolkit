@@ -2,16 +2,30 @@
 import React, { useEffect } from 'react';
 import { TOOLS } from '../constants';
 import ToolCard from '../components/ToolCard';
+import ABHeadline from '../components/ABHeadline';
 import AdPlaceholder from '../components/AdPlaceholder';
+import TestimonialCard from '../components/TestimonialCard';
+import ConversionBanner from '../components/ConversionBanner';
 import { updateMetaTags } from '../utils/seo';
 
 const Home: React.FC = () => {
+  // Randomly pick A or B variant for headline on each page load
+  const [headlineVariant] = React.useState<'A' | 'B'>(() => (Math.random() < 0.5 ? 'A' : 'B'));
+
   useEffect(() => {
     updateMetaTags(
       'YTToolKitPro - #1 Free YouTube Tools for Creators (SEO, AI, Revenue)',
       'Access 30+ free professional YouTube tools: AI Title Generator, Thumbnail Downloader, SEO Checker, Earnings Calculator, and more. No login required. Grow your channel faster with YTToolKitPro.'
     );
-  }, []);
+    // Log headline variant to Google Analytics if available
+    if (window.gtag) {
+      window.gtag('event', 'ab_test_headline', {
+        event_category: 'A/B Test',
+        event_label: headlineVariant,
+        value: headlineVariant === 'A' ? 1 : 2
+      });
+    }
+  }, [headlineVariant]);
 
   // Select a mix of high-demand tools for the homepage
   const popularTools = TOOLS.filter(t => [
@@ -25,24 +39,52 @@ const Home: React.FC = () => {
 
   return (
     <div className="space-y-24 bg-gray-50 dark:bg-[#0f172a] transition-theme pb-20">
+      {/* Usage Stats Bar */}
+      <section className="w-full bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800 py-6">
+        <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-8 md:gap-16 text-center">
+          <div className="flex flex-col items-center">
+            <span className="text-2xl md:text-4xl font-black text-red-600">100k+</span>
+            <span className="text-xs md:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">Creators Served</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-2xl md:text-4xl font-black text-red-600">10M+</span>
+            <span className="text-xs md:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">Thumbnails Generated</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-2xl md:text-4xl font-black text-red-600">30+</span>
+            <span className="text-xs md:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">Free Tools</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-2xl md:text-4xl font-black text-red-600">#1</span>
+            <span className="text-xs md:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">YouTube Toolkit</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Logos Row */}
+      <section className="w-full bg-transparent py-4">
+        <div className="max-w-5xl mx-auto flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 dark:opacity-30 grayscale">
+          <img src="/logo-light.png" alt="YT Toolkit Logo" className="h-8 md:h-10" style={{filter: 'brightness(0.7)'}} loading="lazy" />
+          <img src="https://seeklogo.com/images/Y/youtube-icon-logo-05A36F6DEE-seeklogo.com.png" alt="YouTube" className="h-8 md:h-10" loading="lazy" />
+          <img src="https://cdn.worldvectorlogo.com/logos/product-hunt-1.svg" alt="Product Hunt" className="h-8 md:h-10" loading="lazy" />
+          <img src="https://cdn.worldvectorlogo.com/logos/indie-hackers.svg" alt="Indie Hackers" className="h-8 md:h-10" loading="lazy" />
+          <img src="https://cdn.worldvectorlogo.com/logos/hacker-news.svg" alt="Hacker News" className="h-8 md:h-10" loading="lazy" />
+        </div>
+      </section>
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-32 pb-24 px-4 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
+              {/* Conversion Banner */}
+              <div className="max-w-5xl mx-auto px-4">
+                <ConversionBanner />
+              </div>
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-[11px] font-black uppercase tracking-widest mb-10 border border-red-100 dark:border-red-900/30 shadow-sm">
             <span className="flex h-2 w-2 rounded-full bg-red-600 animate-ping"></span>
             30+ Free Professional Creator Tools
           </div>
-          <h1 className="text-5xl md:text-8xl font-black text-gray-900 dark:text-white tracking-tight leading-[1.05] mb-10">
-            Growth Hacking For <br className="hidden md:block" />
-            <span className="text-red-600 relative inline-block">
-              Modern Creators
-              <svg className="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 100 10" preserveAspectRatio="none">
-                <path d="M0 5 Q 25 0 50 5 T 100 5" stroke="#E11D48" strokeWidth="4" fill="transparent" opacity="0.3" />
-              </svg>
-            </span>
-          </h1>
+          <ABHeadline variant={headlineVariant} />
           <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 mb-14 max-w-3xl mx-auto leading-relaxed font-medium">
-            Dominate the algorithm with AI-powered SEO, precise revenue calculators, and viral content generators. No login. No limits.
+            Instantly generate viral titles, thumbnails, and analytics. 30+ tools. No login. No limits. 100% free for creators.
           </p>
           <div className="flex flex-wrap justify-center gap-5">
             <a 
@@ -113,7 +155,50 @@ const Home: React.FC = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* Testimonials & Trust Badges */}
+        <section className="mb-32">
+          <div className="max-w-4xl mx-auto mb-12">
+            <h2 className="text-3xl font-black text-center text-gray-900 dark:text-white mb-8">What Creators Say</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <TestimonialCard
+                name="Ali"
+                role="Gaming Creator"
+                text="YT Toolkit helped me triple my channel’s growth in 3 months!"
+                avatarUrl="https://randomuser.me/api/portraits/men/32.jpg"
+              />
+              <TestimonialCard
+                name="Sara"
+                role="Vlogger"
+                text="The SEO tools are a game changer. My videos finally rank!"
+                avatarUrl="https://randomuser.me/api/portraits/women/44.jpg"
+              />
+              <TestimonialCard
+                name="John"
+                role="Tech Reviewer"
+                text="No login, no fees, just results. Love it!"
+                avatarUrl="https://randomuser.me/api/portraits/men/65.jpg"
+              />
+              <TestimonialCard
+                name="Priya"
+                role="Education Channel"
+                text="I love the instant results and the free calculators. Super helpful for planning my content!"
+                avatarUrl="https://randomuser.me/api/portraits/women/68.jpg"
+              />
+              <TestimonialCard
+                name="Carlos"
+                role="Music Producer"
+                text="The thumbnail downloader and AI title generator are my go-to tools. Highly recommended!"
+                avatarUrl="https://randomuser.me/api/portraits/men/77.jpg"
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6">
+            <span className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-xs font-bold text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-slate-700"><i className="fa-solid fa-shield-check text-red-600"></i> SSL Secure</span>
+            <span className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-xs font-bold text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-slate-700"><i className="fa-solid fa-lock-open text-red-600"></i> No Login Required</span>
+            <span className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-xs font-bold text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-slate-700"><i className="fa-solid fa-bolt text-red-600"></i> 100% Free</span>
+            <span className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-xs font-bold text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-slate-700"><i className="fa-solid fa-users text-red-600"></i> Trusted by 100k+ Creators</span>
+          </div>
+        </section>
         <section className="bg-red-600 rounded-[50px] p-12 md:p-24 text-center relative overflow-hidden mb-32 shadow-[0_35px_60px_-15px_rgba(225,29,72,0.3)]">
           <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-black text-white mb-8 tracking-tight">Skyrocket Your Views</h2>

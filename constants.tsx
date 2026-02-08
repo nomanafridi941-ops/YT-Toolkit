@@ -7,7 +7,7 @@ export const APP_NAME = "YTToolKitPro";
 export const Logo = () => (
   <picture>
     <source srcSet="/logo-dark.png" media="(prefers-color-scheme: dark)" />
-    <img src="/logo-light.png" alt="YT Toolkit Logo" style={{ height: 40, width: 'auto', display: 'block' }} />
+    <img src="/logo-light.png" alt="YT Toolkit Logo" style={{ height: 40, width: 'auto', display: 'block' }} loading="lazy" />
   </picture>
 );
 

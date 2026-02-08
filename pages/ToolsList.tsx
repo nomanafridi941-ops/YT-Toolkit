@@ -10,9 +10,15 @@ import { updateMetaTags } from '../utils/seo';
 const ToolsList: React.FC = () => {
   const { catId } = useParams<{ catId?: string }>();
   
-  const filteredTools = catId 
+
+  const [search, setSearch] = React.useState('');
+  const filteredTools = (catId 
     ? TOOLS.filter(t => t.category === catId)
-    : TOOLS;
+    : TOOLS
+  ).filter(t =>
+    t.name.toLowerCase().includes(search.toLowerCase()) ||
+    t.description.toLowerCase().includes(search.toLowerCase())
+  );
 
   useEffect(() => {
     if (catId) {
@@ -41,7 +47,17 @@ const ToolsList: React.FC = () => {
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-2 mb-12">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
+        <div className="w-full md:w-1/2">
+          <input
+            type="text"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder="Search tools..."
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white text-base focus:outline-none focus:ring-2 focus:ring-red-500 transition-all"
+            aria-label="Search tools"
+          />
+        </div>
         <a 
           href="/all-tools"
           className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${!catId ? 'bg-red-600 text-white' : 'bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-slate-700 hover:border-red-200'}`}

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Logo, APP_NAME } from '../constants';
+import EmailCapture from './EmailCapture';
 
 const Footer: React.FC = () => {
   return (
@@ -51,6 +52,12 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
+        {/* Email Capture */}
+        <div className="mb-10 flex flex-col items-center">
+          <h3 className="text-lg font-black text-gray-900 dark:text-white mb-2">Get New Tools & Updates</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mb-2 text-center">No spam. Only the best YouTube growth tips and new tool launches.</p>
+          <EmailCapture />
+        </div>
         <div className="border-t border-gray-100 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 dark:text-gray-500 text-xs text-center md:text-left">
             © {new Date().getFullYear()} {APP_NAME}. Built for the creator economy. Not affiliated with YouTube.

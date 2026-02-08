@@ -55,6 +55,7 @@ const Header: React.FC = () => {
             </div>
 
             <a href="/about" className="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">About</a>
+            <a href="/blog" className="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">Blog</a>
             <a href="/contact" className="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">Contact</a>
             
             <button 
