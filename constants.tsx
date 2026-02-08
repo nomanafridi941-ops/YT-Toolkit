@@ -5,32 +5,10 @@ import { Tool, ToolCategory } from './types';
 export const APP_NAME = "YTToolKitPro";
 
 export const Logo = () => (
-  <div className="flex items-center gap-4 group">
-    <div className="relative">
-      <svg width="52" height="52" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-2xl transition-transform group-hover:scale-105 duration-500">
-        <defs>
-          <linearGradient id="brandRed" x1="0" y1="0" x2="100" y2="100">
-            <stop offset="0%" stopColor="#FF4D4D" />
-            <stop offset="100%" stopColor="#CC0000" />
-          </linearGradient>
-        </defs>
-        <rect x="0" y="15" width="100" height="70" rx="22" fill="url(#brandRed)" />
-        <path d="M42 38L65 50L42 62V38Z" fill="white" />
-        <path d="M15 70L30 55L45 65L65 45L80 55M85 35V50H70" stroke="white" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" className="opacity-90 drop-shadow-md" />
-        <circle cx="15" cy="70" r="6" stroke="white" strokeWidth="4" />
-        <path d="M15 67V73M12 70H18" stroke="white" strokeWidth="2" />
-      </svg>
-    </div>
-    <div className="flex flex-col leading-tight">
-      <div className="flex items-baseline gap-1">
-        <span className="text-2xl font-black tracking-tighter text-gray-900 dark:text-white uppercase italic">
-          YT<span className="text-red-600">TOOLKIT</span>
-        </span>
-        <span className="px-1.5 py-0.5 bg-red-600 text-[10px] text-white font-black rounded-md italic">PRO</span>
-      </div>
-      <span className="text-[10px] font-bold text-gray-500 dark:text-gray-400 tracking-[0.2em] uppercase">Scale Your Channel</span>
-    </div>
-  </div>
+  <picture>
+    <source srcSet="/logo-dark.png" media="(prefers-color-scheme: dark)" />
+    <img src="/logo-light.png" alt="YT Toolkit Logo" style={{ height: 40, width: 'auto' }} />
+  </picture>
 );
 
 export const TOOLS: Tool[] = [
