@@ -5,15 +5,10 @@ import { Tool, ToolCategory } from './types';
 export const APP_NAME = "YTToolKitPro";
 
 export const Logo = () => (
-  <div className="flex items-center gap-4 group">
-    <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <rect width="64" height="64" rx="14" fill="#FF0000" />
-      <polygon points="26,20 46,32 26,44" fill="white" />
-    </svg>
-    <span className="text-2xl font-black tracking-tighter text-gray-900 dark:text-white uppercase italic">
-      YT<span className="text-red-600">Toolkit</span>
-    </span>
-  </div>
+  <picture>
+    <source srcSet="/logo-dark.png" media="(prefers-color-scheme: dark)" />
+    <img src="/logo-light.png" alt="YT Toolkit Logo" style={{ height: 40, width: 'auto', display: 'block' }} />
+  </picture>
 );
 
 export const TOOLS: Tool[] = [
