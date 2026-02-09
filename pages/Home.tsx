@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 import { TOOLS } from '../constants';
 import ToolCard from '../components/ToolCard';
 import ABHeadline from '../components/ABHeadline';
-import AdPlaceholder from '../components/AdPlaceholder';
 import TestimonialCard from '../components/TestimonialCard';
 import ConversionBanner from '../components/ConversionBanner';
+import AdPlaceholder from '../components/AdPlaceholder';
 import { updateMetaTags } from '../utils/seo';
 
 const Home: React.FC = () => {
@@ -39,73 +39,42 @@ const Home: React.FC = () => {
 
   return (
     <div className="space-y-24 bg-gray-50 dark:bg-[#0f172a] transition-theme pb-20">
-      {/* Usage Stats Bar */}
-      <section className="w-full bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800 py-6">
-        <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-8 md:gap-16 text-center">
-          <div className="flex flex-col items-center">
-            <span className="text-2xl md:text-4xl font-black text-red-600">100k+</span>
-            <span className="text-xs md:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">Creators Served</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-2xl md:text-4xl font-black text-red-600">10M+</span>
-            <span className="text-xs md:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">Thumbnails Generated</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-2xl md:text-4xl font-black text-red-600">30+</span>
-            <span className="text-xs md:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">Free Tools</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-2xl md:text-4xl font-black text-red-600">#1</span>
-            <span className="text-xs md:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">YouTube Toolkit</span>
-          </div>
-        </div>
-      </section>
 
-      {/* Featured Logos Row */}
-      <section className="w-full bg-transparent py-4">
-        <div className="max-w-5xl mx-auto flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 dark:opacity-30 grayscale">
-          <img src="/logo-light.png" alt="YT Toolkit Logo" className="h-8 md:h-10" style={{filter: 'brightness(0.7)'}} loading="lazy" />
-          <img src="https://seeklogo.com/images/Y/youtube-icon-logo-05A36F6DEE-seeklogo.com.png" alt="YouTube" className="h-8 md:h-10" loading="lazy" />
-          <img src="https://cdn.worldvectorlogo.com/logos/product-hunt-1.svg" alt="Product Hunt" className="h-8 md:h-10" loading="lazy" />
-          <img src="https://cdn.worldvectorlogo.com/logos/indie-hackers.svg" alt="Indie Hackers" className="h-8 md:h-10" loading="lazy" />
-          <img src="https://cdn.worldvectorlogo.com/logos/hacker-news.svg" alt="Hacker News" className="h-8 md:h-10" loading="lazy" />
-        </div>
-      </section>
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-32 pb-24 px-4 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
+      <section className="relative overflow-hidden pt-6 pb-12 px-4 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
               {/* Conversion Banner */}
               <div className="max-w-5xl mx-auto px-4">
                 <ConversionBanner />
+                <div className="mx-auto max-w-3xl px-4">
+                  <AdPlaceholder type="small" className="mx-auto my-4" />
+                </div>
               </div>
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-[11px] font-black uppercase tracking-widest mb-10 border border-red-100 dark:border-red-900/30 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-[11px] font-black uppercase tracking-widest mb-6 border border-red-100 dark:border-red-900/30 shadow-sm">
             <span className="flex h-2 w-2 rounded-full bg-red-600 animate-ping"></span>
             30+ Free Professional Creator Tools
           </div>
-          <ABHeadline variant={headlineVariant} />
-          <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 mb-14 max-w-3xl mx-auto leading-relaxed font-medium">
-            Instantly generate viral titles, thumbnails, and analytics. 30+ tools. No login. No limits. 100% free for creators.
-          </p>
-          <div className="flex flex-wrap justify-center gap-5">
-            <a 
-              href="/all-tools" 
-              className="px-12 py-5 bg-red-600 text-white font-black rounded-2xl shadow-2xl shadow-red-600/40 hover:bg-red-700 hover:-translate-y-1 active:translate-y-0 transition-all text-lg"
-            >
-              Browse Library
-            </a>
-            <a 
-              href="/category/Calculators" 
-              className="px-12 py-5 bg-gray-900 dark:bg-slate-800 text-white font-black rounded-2xl shadow-xl hover:bg-black dark:hover:bg-slate-700 hover:-translate-y-1 active:translate-y-0 transition-all text-lg"
-            >
-              Revenue Calcs
-            </a>
-          </div>
 
-          <div className="mt-20 flex flex-wrap justify-center gap-8 md:gap-16 opacity-40 dark:opacity-20 grayscale">
-            <div className="flex items-center gap-2 font-black text-xl italic"><i className="fa-brands fa-youtube"></i> YouTube</div>
-            <div className="flex items-center gap-2 font-black text-xl italic"><i className="fa-brands fa-tiktok"></i> TikTok</div>
-            <div className="flex items-center gap-2 font-black text-xl italic"><i className="fa-brands fa-instagram"></i> Shorts</div>
-          </div>
+          <section className="mb-8">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">Grow Your Channel Faster with 30+ Free YouTube Tools</h2>
+            <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
+              Instantly generate viral titles, thumbnails, and analytics. 30+ tools. No login. No limits. 100% free for creators.
+            </p>
+            <div className="flex flex-wrap justify-center gap-5">
+              <a
+                href="/category/Calculators"
+                className="px-12 py-5 bg-gray-900 dark:bg-slate-800 text-white font-black rounded-2xl shadow-xl hover:bg-black dark:hover:bg-slate-700 transition-all text-lg"
+              >
+                Revenue Calcs
+              </a>
+              <a
+                href="/all-tools"
+                className="px-12 py-5 bg-red-600 text-white font-black rounded-2xl shadow-2xl shadow-red-600/40 hover:bg-red-700 transition-all text-lg"
+              >
+                Browse Library
+              </a>
+            </div>
+          </section>
         </div>
         
         {/* Background Gradients */}

@@ -2,20 +2,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Footer from './components/Footer';
+import AdPlaceholder from './components/AdPlaceholder';
 import Home from './pages/Home';
 import ToolsList from './pages/ToolsList';
+import Footer from './components/Footer';
 import ToolDetail from './pages/ToolDetail';
 import Sitemap from './pages/Sitemap';
 import SimplePage, { AboutContent, PrivacyContent } from './pages/SimplePage';
 import Blog from './pages/Blog';
 import LandingAd from './pages/LandingAd';
-
 const App: React.FC = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen transition-theme">
         <Header />
+        <div className="hidden md:block">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AdPlaceholder type="banner" label="Sponsored" />
+          </div>
+        </div>
         
         <main className="flex-grow">
           <Routes>

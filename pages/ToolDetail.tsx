@@ -1,4 +1,21 @@
-  // Add FAQ schema for SEO
+
+
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { TOOLS } from '../constants';
+import AdPlaceholder from '../components/AdPlaceholder';
+import ThumbnailTool from '../tools/ThumbnailTool';
+import CalculatorTool from '../tools/CalculatorTool';
+import TemplateTool from '../tools/TemplateTool';
+import { CommentPicker, CPMLookup, UploadTimeTool, ThumbnailPreview } from '../tools/UtilityTools';
+import { updateMetaTags } from '../utils/seo';
+
+const ToolDetail: React.FC = () => {
+
+  const { toolId } = useParams<{ toolId: string }>();
+  const tool = TOOLS.find(t => t.id === toolId);
+
+  // Add FAQ schema for SEO (must be after tool is defined)
   useEffect(() => {
     if (tool && tool.faqs && tool.faqs.length > 0) {
       const faqSchema = {
@@ -23,20 +40,6 @@
       script.textContent = JSON.stringify(faqSchema);
     }
   }, [tool]);
-
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { TOOLS } from '../constants';
-import AdPlaceholder from '../components/AdPlaceholder';
-import ThumbnailTool from '../tools/ThumbnailTool';
-import CalculatorTool from '../tools/CalculatorTool';
-import TemplateTool from '../tools/TemplateTool';
-import { CommentPicker, CPMLookup, UploadTimeTool, ThumbnailPreview } from '../tools/UtilityTools';
-import { updateMetaTags } from '../utils/seo';
-
-const ToolDetail: React.FC = () => {
-  const { toolId } = useParams<{ toolId: string }>();
-  const tool = TOOLS.find(t => t.id === toolId);
 
   useEffect(() => {
     if (tool) {
@@ -159,6 +162,7 @@ const ToolDetail: React.FC = () => {
               </div>
             </div>
 
+            <AdPlaceholder type="vertical160" className="mb-4" />
             <AdPlaceholder type="sidebar" />
           </aside>
           </div>

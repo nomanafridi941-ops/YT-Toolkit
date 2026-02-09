@@ -47,8 +47,8 @@ const ToolsList: React.FC = () => {
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
-        <div className="w-full md:w-1/2">
+      <div className="flex justify-center mb-6">
+        <div className="w-full max-w-7xl">
           <input
             type="text"
             value={search}
@@ -58,6 +58,9 @@ const ToolsList: React.FC = () => {
             aria-label="Search tools"
           />
         </div>
+      </div>
+
+      <div className="flex flex-wrap gap-3 mt-3 mb-6 justify-center">
         <a 
           href="/all-tools"
           className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${!catId ? 'bg-red-600 text-white' : 'bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-slate-700 hover:border-red-200'}`}
@@ -73,6 +76,13 @@ const ToolsList: React.FC = () => {
             {cat}
           </a>
         ))}
+      </div>
+
+      {/* Sidebar-style ad for tools pages (visible on md+) */}
+      <div className="hidden md:flex justify-center mb-12">
+        <div className="w-[300px]">
+          <AdPlaceholder type="sidebar" label="Sponsored" />
+        </div>
       </div>
 
       <AdPlaceholder type="banner" className="mb-12" />
