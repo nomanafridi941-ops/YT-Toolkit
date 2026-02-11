@@ -82,7 +82,7 @@ const Home: React.FC = () => {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AdPlaceholder type="banner" className="mb-24" />
+        {/* ad removed */}
 
         {/* Popular Tools Section */}
         <section className="mb-32">

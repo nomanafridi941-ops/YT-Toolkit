@@ -92,9 +92,7 @@ const ToolsList: React.FC = () => {
         ))}
       </div>
 
-      <div className="mt-12 mb-12">
-        <AdPlaceholder type="banner" />
-      </div>
+      {/* ads removed */}
     </div>
   );
 };
