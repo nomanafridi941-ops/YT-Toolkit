@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { TOOLS } from '../constants';
-import AdPlaceholder from '../components/AdPlaceholder';
 import ThumbnailTool from '../tools/ThumbnailTool';
 import CalculatorTool from '../tools/CalculatorTool';
 import TemplateTool from '../tools/TemplateTool';
@@ -106,7 +105,7 @@ const ToolDetail: React.FC = () => {
           <div className="lg:col-span-8 space-y-12">
             <section>{renderToolUI()}</section>
             
-                          <AdPlaceholder type="banner" className="mb-8" />
+                          {/* ad removed */}
 
 
             {/* Rich SEO Content Section */}
@@ -162,12 +161,11 @@ const ToolDetail: React.FC = () => {
               </div>
             </div>
 
-            <AdPlaceholder type="vertical160" className="mb-4" />
-            <AdPlaceholder type="sidebar" />
+            {/* ads removed */}
           </aside>
           </div>
 
-          <AdPlaceholder type="banner" className="mt-12" />
+          {/* ad removed */}
       </div>
     </div>
   );

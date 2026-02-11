@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { TOOLS } from '../constants';
 import { ToolCategory } from '../types';
 import ToolCard from '../components/ToolCard';
-import AdPlaceholder from '../components/AdPlaceholder';
 import { updateMetaTags } from '../utils/seo';
 
 const ToolsList: React.FC = () => {
@@ -81,11 +80,11 @@ const ToolsList: React.FC = () => {
       {/* Sidebar-style ad for tools pages (visible on md+) */}
       <div className="hidden md:flex justify-center mb-12">
         <div className="w-[300px]">
-          <AdPlaceholder type="sidebar" label="Sponsored" />
+          {/* ad removed */}
         </div>
       </div>
 
-      <AdPlaceholder type="banner" className="mb-12" />
+      {/* ad removed */}
 
       <div className="tool-grid">
         {filteredTools.map(tool => (

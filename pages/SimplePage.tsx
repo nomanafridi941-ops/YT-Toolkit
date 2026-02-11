@@ -1,6 +1,5 @@
 
 import React, { useEffect } from 'react';
-import AdPlaceholder from '../components/AdPlaceholder';
 import { updateMetaTags } from '../utils/seo';
 
 interface SimplePageProps {
@@ -20,11 +19,11 @@ const SimplePage: React.FC<SimplePageProps> = ({ title, content }) => {
     <div className="bg-gray-50 dark:bg-slate-900 min-h-screen transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 py-20">
         <h1 className="text-5xl font-black text-gray-900 dark:text-white mb-10 tracking-tight">{title}</h1>
-        <AdPlaceholder type="banner" className="mb-8" />
+        {/* ad removed */}
         <div className="prose prose-red dark:prose-invert max-w-none text-gray-600 dark:text-gray-400 space-y-8 bg-white dark:bg-slate-800 p-10 rounded-[40px] border border-gray-100 dark:border-slate-700 shadow-xl">
           {content}
         </div>
-        <AdPlaceholder type="banner" className="mt-10" />
+        {/* ad removed */}
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ import ToolCard from '../components/ToolCard';
 import ABHeadline from '../components/ABHeadline';
 import TestimonialCard from '../components/TestimonialCard';
 import ConversionBanner from '../components/ConversionBanner';
-import AdPlaceholder from '../components/AdPlaceholder';
 import { updateMetaTags } from '../utils/seo';
 
 const Home: React.FC = () => {
@@ -45,9 +44,7 @@ const Home: React.FC = () => {
               {/* Conversion Banner */}
               <div className="max-w-5xl mx-auto px-4">
                 <ConversionBanner />
-                <div className="mx-auto max-w-3xl px-4">
-                  <AdPlaceholder type="small" className="mx-auto my-4" />
-                </div>
+                {/* ad removed */}
               </div>
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-[11px] font-black uppercase tracking-widest mb-6 border border-red-100 dark:border-red-900/30 shadow-sm">
@@ -181,7 +178,7 @@ const Home: React.FC = () => {
           <i className="fa-solid fa-chart-line absolute -bottom-10 -left-10 text-[180px] text-white opacity-5 -rotate-12"></i>
         </section>
 
-        <AdPlaceholder type="banner" className="mt-12 mb-24" />
+        {/* ad removed */}
       </div>
     </div>
   );

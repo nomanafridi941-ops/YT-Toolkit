@@ -1,6 +1,5 @@
 
 import React, { useEffect } from 'react';
-import AdPlaceholder from '../components/AdPlaceholder';
 import { TOOLS } from '../constants';
 import { ToolCategory } from '../types';
 import { updateMetaTags } from '../utils/seo';
@@ -23,7 +22,7 @@ const Sitemap: React.FC = () => {
           <p className="text-gray-500 dark:text-gray-400 font-medium">A complete list of all pages and tools on YTToolKitPro.</p>
         </div>
 
-        <AdPlaceholder type="banner" className="mb-10" />
+        {/* ad removed */}
 
         <div className="space-y-12">
           {/* Main Pages */}
@@ -81,7 +80,7 @@ const Sitemap: React.FC = () => {
           </section>
         </div>
 
-        <AdPlaceholder type="banner" className="mt-12" />
+        {/* ad removed */}
       </div>
     </div>
   );
