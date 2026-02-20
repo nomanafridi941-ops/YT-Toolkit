@@ -53,7 +53,7 @@ const Home: React.FC = () => {
           </div>
 
           <section className="mb-8">
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">Grow Your Channel Faster with 30+ Free YouTube Tools</h2>
+            <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">Grow Your Channel Faster with 30+ Free YouTube Tools</h1>
             <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
               Instantly generate viral titles, thumbnails, and analytics. 30+ tools. No login. No limits. 100% free for creators.
             </p>
